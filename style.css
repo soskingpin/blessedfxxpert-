@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #0b0b0b;
+  color: #fff;
+}
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(45deg, #111, #1a1a1a);
+}
+.hero .highlight {
+  color: gold;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: gold;
+  color: black;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+.courses {
+  padding: 2rem;
+  text-align: center;
+}
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.course {
+  background-color: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid gold;
+}
+.contacts {
+  padding: 2rem;
+  text-align: center;
+  background-color: #111;
+}
+.socials a {
+  margin: 0.5rem;
+  display: inline-block;
+}
+footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: #0b0b0b;
+  border-top: 1px solid #333;
+}
