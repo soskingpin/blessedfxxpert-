@@ -1,441 +1,219 @@
-/* General Styles and Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
-
-:root {
-    --primary-color: #FFC000;
-    --dark-color: #1A1A1A;
-    --light-gray: #F5F7FA;
-    --white-color: #FFFFFF;
-    --text-dark: #333333;
-    --text-gray: #666666;
-    --hero-bg: url('https://images.unsplash.com/photo-1627483262624-e75184b2560b?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+/* ======================== */
+/* ==== GLOBAL STYLING ==== */
+/* ======================== */
 
 body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    background-color: var(--dark-color);
-    color: var(--white-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+h1, h2 {
+  font-weight: 300;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+/* ======================== */
+/* ======= HEADER ========= */
+/* ======================== */
+
+header {
+  background-color: #0d1b2a; /* Dark navy */
+  color: #fff;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
-ul {
-    list-style: none;
+nav {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
-/* Button Styles */
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border: none;
-    cursor: pointer;
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.btn-hero {
-    background-color: var(--primary-color);
-    color: var(--dark-color);
-    font-size: 16px;
-    box-shadow: 0 4px 15px rgba(255, 192, 0, 0.4);
+nav ul {
+  list-style: none;
+  display: flex;
 }
 
-.btn-hero:hover {
-    background-color: #FFD44F;
+nav ul li {
+  padding: 0 15px;
 }
 
-.btn-course {
-    background-color: var(--primary-color);
-    color: var(--dark-color);
-    font-size: 14px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(255, 192, 0, 0.4);
+nav a {
+  color: #fff;
+  text-decoration: none;
 }
 
-.btn-course:hover {
-    background-color: #FFD44F;
+/* ======================== */
+/* ======= MAIN =========== */
+/* ======================== */
+
+main {
+  padding-top: 70px;
 }
 
-.btn-cta {
-    background-color: var(--white-color);
-    color: var(--dark-color);
-    font-size: 16px;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+section {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 40px 20px;
+  background: #ffffff; /* White content boxes */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.btn-cta:hover {
-    background-color: var(--light-gray);
+#hero {
+  background: #1b263b; /* Hero deep blue */
+  color: #fff;
+  text-align: center;
+  border-radius: 0;
+  margin-top: -10px;
 }
 
-/* Header */
-.header {
-    padding: 20px 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
+/* ======================== */
+/* ===== SERVICES ========= */
+/* ======================== */
+
+.service-item {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
 }
 
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* ======================== */
+/* ===== FOOTER =========== */
+/* ======================== */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #333333; /* Dark footer */
+  color: #fff;
 }
 
-.logo h1 {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--primary-color);
+footer .disclaimer {
+  font-size: 0.8rem;
+  max-width: 800px;
+  margin: 10px auto 0 auto;
+  color: #ccc;
 }
 
-.nav a {
-    margin-left: 20px;
-    font-weight: 600;
+/* ======================== */
+/* === SPLASH SCREEN ===== */
+/* ======================== */
+
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0d1b2a;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease-out, visibility 1s ease-out;
 }
 
-.nav a:hover {
-    color: var(--primary-color);
+#splash-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
-/* Hero Section */
-.hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), var(--hero-bg) no-repeat center center/cover;
-    color: var(--white-color);
-    text-align: center;
-    padding: 150px 0 100px;
+.splash-text {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeInUp 1.5s ease-out forwards;
 }
 
-.hero .tagline {
-    color: var(--primary-color);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.hero h1 {
-    font-size: 4.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
+/* ======================== */
+/* ===== CONTACT MODAL ==== */
+/* ======================== */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6); /* Dimmed black overlay */
 }
 
-.hero h1 span {
-    color: var(--primary-color);
+.modal-content {
+  background-color: #ffffff; /* White modal box */
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.hero .description {
-    max-width: 600px;
-    margin: 0 auto 30px;
-    font-size: 18px;
-    color: #DDDDDD;
+.modal-content h2 {
+  margin-top: 0;
+  color: #0d1b2a;
+  text-align: center;
 }
 
-/* Trust Section */
-.trust-section {
-    background-color: #242424;
-    padding: 50px 0;
+.contact-list {
+  list-style: none;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
-.trust-card {
-    background-color: #2F2F2F;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    max-width: 800px;
-    margin: -100px auto 0;
-    display: flex;
-    align-items: center;
+.contact-list li a {
+  color: #1b263b;
+  text-decoration: none;
 }
 
-.trust-card-header {
-    display: flex;
-    align-items: center;
-    margin-right: 40px;
+.contact-list li a:hover {
+  text-decoration: underline;
 }
 
-.trust-card-header img {
-    height: 40px;
-    width: 40px;
-    margin-right: 15px;
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
 }
 
-.trust-card-header h3 {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.trust-card-body p {
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 5px;
-    background-color: #3B3B3B;
-    color: #B0B0B0;
-    font-size: 14px;
-    margin-right: 10px;
-}
-
-/* Courses Section */
-.courses-section {
-    padding: 80px 0;
-    text-align: center;
-    background-color: #1A1A1A;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.section-subtitle {
-    max-width: 600px;
-    margin: 0 auto 50px;
-    color: #B0B0B0;
-}
-
-.course-card {
-    background-color: #242424;
-    border-radius: 20px;
-    padding: 40px;
-    margin-bottom: 30px;
-    text-align: left;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.course-card .card-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.course-card .card-header img {
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    padding: 10px;
-    height: 50px;
-    width: 50px;
-    margin-right: 15px;
-}
-
-.course-card h3 {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.course-card .card-description {
-    color: #B0B0B0;
-    margin-bottom: 25px;
-}
-
-.course-card .price {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--white-color);
-    margin-bottom: 25px;
-}
-
-/* Call to Action Section */
-.cta-section {
-    background-color: var(--primary-color);
-    color: var(--dark-color);
-    padding: 100px 0;
-    text-align: center;
-}
-
-.cta-section h2 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-}
-
-.cta-section p {
-    font-size: 18px;
-    max-width: 700px;
-    margin: 0 auto 40px;
-}
-
-/* Footer Section */
-.footer {
-    background-color: #111111;
-    color: #B0B0B0;
-    padding: 60px 0 20px;
-}
-
-.footer .container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-}
-
-.footer-col {
-    width: 15%;
-}
-
-.footer-col-logo {
-    width: 25%;
-}
-
-.footer-logo {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--primary-color);
-}
-
-.footer h4 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.footer h4::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    background-color: var(--primary-color);
-    height: 2px;
-    width: 50px;
-}
-
-.footer ul li:not(:last-child) {
-    margin-bottom: 10px;
-}
-
-.footer ul li a {
-    font-size: 14px;
-    color: #B0B0B0;
-    transition: color 0.3s ease;
-}
-
-.footer ul li a:hover {
-    color: var(--white-color);
-}
-
-.social-links a {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-.social-links img {
-    height: 30px;
-    width: 30px;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #333333;
-}
-
-.footer-bottom p {
-    font-size: 14px;
-    color: #B0B0B0;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .hero h1 {
-        font-size: 3.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    .hero .description {
-        font-size: 16px;
-    }
-
-    .trust-card {
-        flex-direction: column;
-        text-align: center;
-    }
-    .trust-card-header {
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-    .trust-card-body p {
-        margin-bottom: 10px;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-    .cta-section h2 {
-        font-size: 2rem;
-    }
-
-    .footer .container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .footer-col {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .footer-col h4::before {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .footer-col-logo {
-        width: 100%;
-        margin-bottom: 30px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
-    .hero .description {
-        font-size: 14px;
-    }
-    .trust-card {
-        padding: 20px;
-    }
-    .course-card {
-        padding: 30px;
-    }
-    .course-card .price {
-        font-size: 2rem;
-    }
-    .btn-course {
-        font-size: 12px;
-    }
-    .cta-section h2 {
-        font-size: 1.5rem;
-    }
-    .cta-section p {
-        font-size: 14px;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
