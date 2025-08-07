@@ -1,181 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blessedfxxpert - Forex Trading Specialist</title>
-  <style>
-    /* Base & Reset */
-    body {
-      margin: 0; padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d1b2a;
-      color: #d4af37;
-      line-height: 1.6;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInPage 1s ease forwards;
-    }
-    @keyframes fadeInPage {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    a {
-      color: #d4af37;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #f5d76e;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blessedfxxpert - Forex Trading Specialist</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d1b2a;
+    color: #d4af37;
+    line-height: 1.6;
+  }
+  a {
+    color: #d4af37;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #f5d76e;
+  }
 
-    /* Header */
-    header {
-      background-color: #0a1622;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      padding: 1rem 0;
-      box-shadow: 0 2px 6px rgba(212,175,55,0.3);
-      z-index: 1000;
-    }
-    nav {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
-    .logo {
-      font-size: 1.7rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-      font-family: Georgia, serif;
-      color: #f5d76e;
-    }
-    ul {
-      list-style: none;
-      display: flex;
-      margin: 0; padding: 0;
-    }
-    li {
-      margin-left: 20px;
-    }
-    nav a {
-      font-weight: 600;
-      font-size: 1rem;
-    }
+  /* Top contact bar */
+  #contact-bar {
+    background: #121f3c;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 8px 0;
+    font-size: 0;
+  }
+  #contact-bar a {
+    color: #d4af37;
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+  }
+  #contact-bar a:hover {
+    color: #f5d76e;
+  }
+  #contact-bar svg {
+    width: 22px;
+    height: 22px;
+  }
 
-    /* Main */
-    main {
-      padding-top: 80px;
-      max-width: 1000px;
-      margin: 40px auto;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
+  /* Header */
+  header {
+    background-color: #0a1622;
+    position: sticky;
+    top: 0;
+    padding: 1rem 20px;
+    box-shadow: 0 2px 6px rgba(212,175,55,0.3);
+    z-index: 1000;
+  }
+  nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: Georgia, serif;
+    color: #f5d76e;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    margin: 0; padding: 0;
+  }
+  li {
+    margin-left: 20px;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+  }
 
-    /* Hero */
-    #hero {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-    #hero h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: #f5d76e;
-      text-shadow: 0 0 6px #d4af37;
-    }
-    #hero p {
-      font-size: 1.3rem;
-      font-weight: 500;
-      color: #ffd700;
-      text-shadow: 0 0 4px #d4af37;
-    }
-    #hero a.btn {
-      margin-top: 20px;
-      display: inline-block;
-      background-color: #d4af37;
-      color: #162040;
-      padding: 14px 32px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #d4af37;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    #hero a.btn:hover {
-      background-color: #f5d76e;
-      color: #0d1b2a;
-      box-shadow: 0 0 25px #f5d76e;
-    }
+  /* Main content */
+  main {
+    max-width: 1000px;
+    margin: 60px auto 40px;
+    padding: 0 20px;
+  }
 
-    /* Services Section */
-    #services {
-      background: #162040;
-      border-radius: 12px;
-      padding: 40px 20px;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-      color: #f5d76e;
-    }
-    #services h2 {
-      font-size: 2rem;
-      margin-bottom: 25px;
-      text-align: center;
-      text-shadow: 0 0 5px #d4af37;
-    }
-    .package-list {
-      max-width: 600px;
-      margin: 0 auto;
-      font-size: 1.2rem;
-      line-height: 1.8;
-      font-weight: 600;
-    }
-    .package-list p {
-      margin: 10px 0;
-      padding: 10px 15px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-      transition: background-color 0.3s, color 0.3s;
-      border-radius: 6px;
-      cursor: default;
-      box-shadow: 0 0 5px rgba(212, 175, 55, 0.2);
-    }
-    .package-list p:hover {
-      background-color: #d4af37;
-      color: #162040;
-      box-shadow: 0 0 12px #d4af37;
-    }
+  /* Hero */
+  #hero {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  #hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #f5d76e;
+    text-shadow: 0 0 6px #d4af37;
+  }
+  #hero p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #ffd700;
+    text-shadow: 0 0 4px #d4af37;
+  }
+  #hero a.btn {
+    margin-top: 20px;
+    display: inline-block;
+    background-color: #d4af37;
+    color: #162040;
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #d4af37;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  #hero a.btn:hover {
+    background-color: #f5d76e;
+    color: #0d1b2a;
+    box-shadow: 0 0 25px #f5d76e;
+  }
 
-  </style>
+  /* Services */
+  #services {
+    background: #162040;
+    border-radius: 12px;
+    padding: 40px 20px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    color: #f5d76e;
+  }
+  #services h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 0 0 5px #d4af37;
+  }
+  .package-list {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 600;
+  }
+  .package-list p {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 6px;
+    cursor: default;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.2);
+  }
+  .package-list p:hover {
+    background-color: #d4af37;
+    color: #162040;
+    box-shadow: 0 0 12px #d4af37;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">Blessedfxxpert</div>
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <section id="hero">
-      <h1>Master Forex Trading with Blessedfxxpert</h1>
-      <p>Your trusted partner in Zimbabwe for Forex education and mentorship.</p>
-      <a href="contact.html" class="btn">Contact</a>
-    </section>
+<!-- Top contact bar -->
+<div id="contact-bar" aria-label="Contact Links">
+  <a href="https://wa.me/263789385081" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <!-- WhatsApp SVG icon -->
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.484A11.782 11.782 0 0 0 12.004 0C5.373 0 .01 5.366.01 12.005c0 2.121.555 4.18 1.605 5.995L0 24l6.175-1.612a11.93 11.93 0 0 0 5.83 1.49h.002c6.63 0 12.01-5.368 12.01-11.996a11.93 11.93 0 0 0-3.495-8.398zM12.01 21.72a9.612 9.612 0 0 1-4.933-1.415l-.353-.209-3.66.957.978-3.565-.229-.367a9.59 9.59 0 1 1 8.197 4.6zm5.247-7.468c-.29-.145-1.713-.845-1.978-.942-.266-.097-.459-.145-.652.146-.19.292-.733.942-.9 1.136-.166.193-.332.217-.622.072-.29-.146-1.223-.452-2.33-1.437-.861-.767-1.444-1.713-1.613-2.004-.168-.292-.018-.45.128-.594.131-.131.29-.34.435-.51.147-.17.195-.292.29-.487.097-.193.05-.36-.025-.505-.075-.146-.652-1.572-.893-2.157-.235-.565-.474-.49-.652-.5a3.7 3.7 0 0 0-.613-.073c-.19 0-.51.072-.778.36-.27.292-1.04 1.02-1.04 2.482 0 1.46 1.065 2.87 1.213 3.07.147.193 2.093 3.196 5.068 4.48.708.306 1.26.49 1.692.626.71.227 1.356.195 1.87.118.57-.086 1.713-.698 1.956-1.37.245-.67.245-1.244.17-1.37-.073-.125-.265-.193-.553-.338z"/></svg>
+  </a>
+  <a href="mailto:Bdpvtltd1@gmail.com" aria-label="Email">
+    <!-- Email SVG icon -->
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.511L12 13 4 6.511V6h16zm-16 12V9.489l7.617 6.034a1 1 0 0 0 1.175 0L20 9.49V18H4z"/></svg>
+  </a>
+  <a href="https://www.facebook.com/share/16kgW17azL/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+    <!-- Facebook SVG icon -->
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.734 0-1.325.59-1.325 1.326v21.348c0 .734.59 1.326 1.325 1.326h11.49v-9.293h-3.128v-3.622h3.128v-2.672c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.314h3.59l-.467 3.622h-3.123v9.293h6.116c.733 0 1.324-.592 1.324-1.326v-21.35c0-.736-.59-1.326-1.325-1.326z"/></svg>
+  </a>
+  <a href="https://www.instagram.com/blessing_forex_xperts/profilecard/?igsh=MWtid2M5dXhkZW8zdg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <!-- Instagram SVG icon -->
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.25 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4.25 1.25a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5z"/></svg>
+  </a>
+  <a href="https://youtube.com/@blessingfxguru?si=jrrsc4mTZpiOwGQx" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+    <!-- YouTube SVG icon -->
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6zm12-3c0-1.1-.89-2-2-2h-3.5v4H20c1.11 0 2-.9 2-2zM3.5 5.5h17v13h-17v-13z"/></svg>
+  </a>
+</div>
 
-    <section id="services">
-      <h2>Services</h2>
-      <div class="package-list">
-        <p>Mentorship - $150 full course</p>
-        <p>Basics - $65</p>
-        <p>VIP - $45 per month</p>
-        <p>$20 week</p>
-        <p>$1k lifetime</p>
-      </div>
-    </section>
-  </main>
+<header>
+  <nav>
+    <div class="logo">Blessedfxxpert</div>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="hero">
+    <h1>Master Forex Trading with Blessedfxxpert</h1>
+    <p>Your trusted partner in Zimbabwe for Forex education and mentorship.</p>
+    <a href="contact.html" class="btn">Contact</a>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <div class="package-list">
+      <p>Mentorship - $150 full course</p>
+      <p>Basics - $65</p>
+      <p>VIP - $45 per month</p>
+      <p>$20 week</p>
+      <p>$1k lifetime</p>
+    </div>
+  </section>
+</main>
+
 </body>
 </html>
