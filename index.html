@@ -4,192 +4,413 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Blessedfxxpert - Forex Trading Specialist</title>
+
 <style>
-  /* Reset & basics */
-  *, *::before, *::after {
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  /* Reset & base */
+  * {
     box-sizing: border-box;
   }
   body {
     margin: 0; padding: 0;
     background: #0b0b0b;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #d4af37;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
   a {
     color: #d4af37;
     text-decoration: none;
-    font-weight: 600;
     transition: color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
   }
   a:hover, a:focus {
-    color: #fff3a1;
+    color: #fff7a1;
+    outline: none;
+  }
+  button {
+    cursor: pointer;
+  }
+
+  /* Scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #111;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d4af37cc;
+    border-radius: 5px;
+  }
+
+  /* Header */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #121212cc;
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 2px solid #d4af37;
+    z-index: 1000;
+    box-shadow: 0 0 12px #d4af37aa;
+  }
+  nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px #d4af37cc;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+  }
+  nav ul li a {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus {
+    background: #d4af37;
+    color: #0b0b0b;
     outline: none;
   }
 
-  /* Container with LED style glowing border outside */
-  .container {
-    max-width: 960px;
-    margin: 60px auto 80px;
-    padding: 40px 50px;
-    background: #121212;
-    border-radius: 16px;
-    position: relative;
-    box-shadow:
-      0 0 10px #d4af37aa,
-      0 0 30px #d4af37aa,
-      0 0 60px #b8860b99,
-      0 0 90px #d4af37cc;
-    border: 4px solid #d4af37;
+  /* Sections container */
+  main {
+    padding-top: 72px;
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  .container::before {
-    content: "";
-    position: absolute;
-    top: -10px; left: -10px; right: -10px; bottom: -10px;
-    border-radius: 26px;
-    background: linear-gradient(270deg, #d4af37, #b8860b, #d4af37, #b8860b);
-    background-size: 600% 600%;
-    animation: glowing 10s linear infinite;
-    filter: blur(8px);
-    opacity: 0.75;
-    z-index: -1;
-  }
-  @keyframes glowing {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+  section {
+    margin-bottom: 70px;
   }
 
   /* Hero */
-  .hero {
+  #hero {
     text-align: center;
-    margin-bottom: 48px;
+    padding: 80px 10px 60px;
   }
-  .hero h1 {
-    font-size: 3rem;
+  #hero h1 {
+    font-size: 3.8rem;
     font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-    text-shadow: 0 0 6px #d4af37cc;
+    margin-bottom: 14px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px #d4af37cc;
   }
-  .hero p {
-    font-size: 1.25rem;
-    color: #f7d470;
-    text-shadow: 0 0 4px #b8860b88;
+  #hero p {
+    font-size: 1.4rem;
+    color: #fff7a1;
+    text-shadow: 0 0 8px #b8860bcc;
+  }
+
+  /* Home info boxes */
+  #home-info {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .info-box {
+    background: #121212;
+    border: 3px solid #d4af37;
+    border-radius: 16px;
+    box-shadow: 0 0 25px #d4af37aa;
+    padding: 30px 20px;
+    max-width: 320px;
+    flex: 1 1 280px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .info-box:hover,
+  .info-box:focus-within {
+    box-shadow: 0 0 40px #fff7a1cc, 0 0 80px #d4af37ff;
+    transform: scale(1.07);
+    outline: none;
+  }
+  .info-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    text-shadow: 0 0 8px #d4af37cc;
+  }
+  .info-box p {
+    font-size: 1.1rem;
+    color: #e6d58e;
+    line-height: 1.5;
+  }
+
+  /* Services Section */
+  #services {
+    max-width: 100%;
+  }
+  #services h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px #d4af37cc;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 28px;
+  }
+  .card {
+    background: #121212;
+    border: 3px solid #d4af37;
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow:
+      0 0 12px #d4af37aa,
+      0 0 30px #d4af37aa;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card:hover,
+  .card:focus-within {
+    box-shadow:
+      0 0 18px #fff7a1cc,
+      0 0 40px #ffd700cc,
+      0 0 80px #d4af37ff;
+    border-color: #fff7a1;
+    transform: scale(1.05);
+    outline: none;
+  }
+  .card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .price {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #fff7a1;
+    text-shadow: 0 0 8px #d4af37cc;
+  }
+  .desc {
+    font-size: 1.05rem;
+    color: #e6d58e;
+    flex-grow: 1;
+    margin-bottom: 24px;
+    line-height: 1.4;
+  }
+  .btn-contact {
+    background: #d4af37;
+    color: #0b0b0b;
+    font-weight: 700;
+    padding: 12px 0;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    box-shadow: 0 0 14px #d4af37aa;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    user-select: none;
+  }
+  .btn-contact:hover,
+  .btn-contact:focus {
+    background: #fff7a1;
+    box-shadow: 0 0 20px #fff7a1cc;
+    outline: none;
   }
 
   /* Contact Section */
   #contact {
-    max-width: 720px;
+    max-width: 600px;
     margin: 0 auto;
+    text-align: center;
   }
   #contact h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 30px;
-    letter-spacing: 1.2px;
-    text-shadow: 0 0 6px #d4af37cc;
+    font-size: 2.8rem;
+    margin-bottom: 24px;
+    text-shadow: 0 0 15px #d4af37cc;
   }
-
-  #contact p {
+  .social-links {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    font-size: 1.15rem;
-    margin-bottom: 22px;
     justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
   }
-  #contact p:last-child {
-    margin-bottom: 0;
+  .social-link {
+    color: #d4af37;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
   }
-
-  /* Icons */
-  .contact-icon {
+  .social-link svg {
     width: 28px;
     height: 28px;
-    fill: #d4af37;
-    flex-shrink: 0;
+    margin-right: 6px;
+    fill: currentColor;
     transition: fill 0.3s ease;
   }
-  a:hover .contact-icon,
-  a:focus .contact-icon {
-    fill: #fff3a1;
+  .social-link:hover,
+  .social-link:focus {
+    color: #fff7a1;
+    outline: none;
+  }
+  #contact p.contact-info {
+    font-size: 1.15rem;
+    margin: 6px 0;
+    color: #e6d58e;
+  }
+
+  /* Animations */
+  .fade-in {
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+  }
+  .fade-in-delay-1 {
+    animation-delay: 0.3s;
+  }
+  .fade-in-delay-2 {
+    animation-delay: 0.6s;
+  }
+  .fade-in-delay-3 {
+    animation-delay: 0.9s;
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Responsive */
-  @media (max-width: 600px) {
-    .container {
-      padding: 30px 20px;
-      margin: 40px 15px 60px;
+  @media (max-width: 768px) {
+    #home-info {
+      flex-direction: column;
+      align-items: center;
     }
-    .hero h1 {
-      font-size: 2.2rem;
+    .info-box {
+      max-width: 100%;
+      width: 90%;
     }
-    #contact h2 {
-      font-size: 1.75rem;
+  }
+  @media (max-width: 480px) {
+    #hero h1 {
+      font-size: 2.6rem;
     }
-    #contact p {
+    #hero p {
+      font-size: 1.1rem;
+    }
+    .card-title {
+      font-size: 1.4rem;
+    }
+    .price {
+      font-size: 1.3rem;
+    }
+    .desc {
       font-size: 1rem;
-      gap: 12px;
-    }
-    .contact-icon {
-      width: 22px;
-      height: 22px;
     }
   }
 </style>
 </head>
 <body>
 
-<div class="container" role="main" aria-label="Welcome section">
-  <section class="hero">
-    <h1>Blessedfxxpert</h1>
-    <p>Your Professional Forex Trading Specialist</p>
+<header role="banner">
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="logo" tabindex="0">Blessedfxxpert</div>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main role="main">
+  <!-- Hero -->
+  <section id="hero" class="fade-in" tabindex="0" aria-label="Hero section">
+    <h1>Master the Forex Markets</h1>
+    <p>Your professional trading partner for analysis, education, and strategy in Zimbabwe.</p>
   </section>
 
-  <section id="contact" aria-label="Contact Information">
-    <h2>Contact Details</h2>
-
-    <p>
-      <a href="https://wa.me/263789385081" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.52 3.484A11.782 11.782 0 0 0 12.004 0C5.373 0 .01 5.366.01 12.005c0 2.121.555 4.18 1.605 5.995L0 24l6.175-1.612a11.93 11.93 0 0 0 5.83 1.49h.002c6.63 0 12.01-5.368 12.01-11.996a11.93 11.93 0 0 0-3.495-8.398zM12.01 21.72a9.612 9.612 0 0 1-4.933-1.415l-.353-.209-3.66.957.978-3.565-.229-.367a9.59 9.59 0 1 1 8.197 4.6zm5.247-7.468c-.29-.145-1.713-.845-1.978-.942-.266-.097-.459-.145-.652.146-.19.292-.733.942-.9 1.136-.166.193-.332.217-.622.072-.29-.146-1.223-.452-2.33-1.437-.861-.767-1.444-1.713-1.613-2.004-.168-.292-.018-.45.128-.594.131-.131.29-.34.435-.51.147-.17.195-.292.29-.487.097-.193.05-.36-.025-.505-.075-.146-.652-1.572-.893-2.157-.235-.565-.474-.49-.652-.5a3.7 3.7 0 0 0-.613-.073c-.19 0-.51.072-.778.36-.27.292-1.04 1.02-1.04 2.482 0 1.46 1.065 2.87 1.213 3.07.147.193 2.093 3.196 5.068 4.48.708.306 1.26.49 1.692.626.71.227 1.356.195 1.87.118.57-.086 1.713-.698 1.956-1.37.245-.67.245-1.244.17-1.37-.073-.125-.265-.193-.553-.338z"/></svg>
-        WhatsApp: +263 78 938 5081
-      </a>
-    </p>
-
-    <p>
-      <a href="mailto:Bdpvtltd1@gmail.com" aria-label="Email">
-        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.511L12 13 4 6.511V6h16zm-16 12V9.489l7.617 6.034a1 1 0 0 0 1.175 0L20 9.49V18H4z"/></svg>
-        Email: Bdpvtltd1@gmail.com
-      </a>
-    </p>
-
-    <p>
-      <a href="https://www.facebook.com/share/16kgW17azL/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35c-.734 0-1.325.59-1.325 1.326v21.348c0 .734.59 1.326 1.325 1.326h11.49v-9.293h-3.128v-3.622h3.128v-2.672c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.314h3.59l-.467 3.622h-3.123v9.293h6.116c.733 0 1.324-.592 1.324-1.326v-21.35c0-.736-.59-1.326-1.325-1.326z"/></svg>
-        Facebook
-      </a>
-    </p>
-
-    <p>
-      <a href="https://www.instagram.com/blessing_forex_xperts/profilecard/?igsh=MWtid2M5dXhkZW8zdg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.25 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4.25 1.25a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5z"/></svg>
-        Instagram
-      </a>
-    </p>
-
-    <p>
-      <a href="https://youtube.com/@blessingfxguru?si=jrrsc4mTZpiOwGQx" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.615 3.184c-1.293-.158-6.458-.158-6.458-.158s-5.164 0-6.457.158c-1.36.166-2.42 1.22-2.587 2.58-.158 1.294-.158 4-.158 4s0 2.71.158 4.004c.168 1.36 1.227 2.42 2.587 2.588 1.293.158 6.457.158 6.457.158s5.164 0 6.458-.158c1.36-.168 2.42-1.227 2.587-2.588.158-1.294.158-4 .158-4s0-2.71-.158-4.004c-.167-1.36-1.227-2.414-2.587-2.58zM10.75 14.75v-5.5l4.75 2.75-4.75 2.75z"/></svg>
-        YouTube
-      </a>
-    </p>
+  <!-- Home info boxes -->
+  <section id="home-info" aria-label="How to get started with Blessedfxxpert" >
+    <article class="info-box fade-in fade-in-delay-1" tabindex="0">
+      <h3>📈 See Trade Records</h3>
+      <p>Track real trading performance and verify our strategies with transparent records.</p>
+    </article>
+    <article class="info-box fade-in fade-in-delay-2" tabindex="0">
+      <h3>💳 Open Your Trading Account</h3>
+      <p>Get step-by-step guidance to set up a Forex account easily with trusted brokers.</p>
+    </article>
+    <article class="info-box fade-in fade-in-delay-3" tabindex="0">
+      <h3>💵 How To Earn</h3>
+      <p>Learn proven methods to maximize your profits and grow your Forex trading skills.</p>
+    </article>
   </section>
-</div>
 
-</body>
-</html>
+  <!-- Services -->
+  <section id="services" class="fade-in" tabindex="0" aria-label="Services and packages offered">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <article class="card" tabindex="0" role="region" aria-label="Mentorship package">
+        <div class="card-title">🎓 Mentorship</div>
+        <div class="price">$150 - Full Course</div>
+        <div class="desc">Personalized coaching and expert guidance to master Forex trading.</div>
+        <a href="#contact" class="btn-contact" aria-label="Contact us about Mentorship package">Contact Us</a>
+      </article>
+      <article class="card" tabindex="0" role="region" aria-label="Basics package">
+        <div class="card-title">📘 Basics</div>
+        <div class="price">$65</div>
+        <div class="desc">Beginner-friendly package covering technical analysis and trading essentials.</div>
+        <a href="#contact" class="btn-contact" aria-label="Contact us about Basics package">Contact Us</a>
+      </article>
+      <article class="card" tabindex="0" role="region" aria-label="VIP package">
+        <div class="card-title">👑 VIP</div>
+        <div class="price">$45 / month</div>
+        <div class="desc">Monthly subscription for market analysis, signals, and exclusive tips.</div>
+        <a href="#contact" class="btn-contact" aria-label="Contact us about VIP package">Contact Us</a>
+      </article>
+      <article class="card" tabindex="0" role="region" aria-label="Weekly package">
+        <div class="card-title">⏳ Weekly</div>
+        <div class="price">$20 / week</div>
+        <div class="desc">Affordable weekly insights and strategy updates.</div>
+        <a href="#contact" class="btn-contact" aria-label="Contact us about Weekly package">Contact Us</a>
+      </article>
+      <article class="card" tabindex="0" role="region" aria-label="Lifetime package">
+        <div class="card-title">💰 Lifetime</div>
+        <div class="price">$1,000</div>
+        <div class="desc">Lifetime access to all courses, mentorship, signals, and exclusive content.</div>
+        <a href="#contact" class="btn-contact" aria-label="Contact us about Lifetime package">Contact Us</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="fade-in" tabindex="0" aria-label="Contact section">
+    <h2>Contact Us</h2>
+    <div class="social-links">
+      <a href="https://wa.me/263789385081" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
+        <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M20.52 3.484A11.782 11.782 0 0 0 12.004 0C5.373 0 .01 5.366.01 12.005c0 2.121.555 4.18 1.605 5.995L0 24l6.175-1.612a11.93 11.93 0 0 0 5.83 1.49h.002c6.63 0 12.01-5.368 12.01-11.996a11.93 11.93 0 0 0-3.495-8.398zM12.01 21.72a9.612 9.612 0 0 1-4.933-1.415l-.353-.209-3.66.957.978-3.565-.229-.367a9.59 9.59 0 1 1 8.197 4.6zm5.247-7.468c-.29-.145-1.713-.845-1.978-.942-.266-.097-.459-.145-.652.146-.19.292-.733.942-.9 1.136-.166.193-.332.217-.622.072-.29-.146-1.223-.452-2.33-1.437-.861-.767-1.444-1.713-1.613-2.004-.168-.292-.018-.45.128-.594.131-.131.29-.34.435-.51.147-.17.195-.292.29-.487.097-.193.05-.36-.025-.505-.075-.146-.652-1.572-.893-2.157-.235-.565-.474-.49-.652-.5a3.7 3.7 0 0 0-.613-.073c-.19 0-.51.072-.778.36-.27.292-1.04 1.02-1.04 2.482 0 1.46 1.065 2.87 1.213 3.07.147.193 2.093 3.196 5.068 4.48.708.306 1.26.49 1.692.626.71.227 1.356.195 1.87.118.57-.086 1.713-.698 1.956-1.37.245-.67.
