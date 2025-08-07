@@ -3,148 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blessedfxxpert - Master Forex Trading</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <title>Your Name - Forex Trading Specialist</title>
+    
+    <style>
+        /* ================================== */
+        /* ====== ALL CSS STYLING HERE ====== */
+        /* ================================== */
+
+        /* Basic Setup */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1, h2 {
+            font-weight: 300;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #0d1b2a; /* Dark Blue */
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Make sure header is above content but below splash */
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            padding: 0 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Main Content & Sections */
+        main {
+            padding-top: 70px; /* To offset the fixed header */
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        #hero {
+            background: #1b263b; /* Another shade of blue */
+            color: #fff;
+            text-align: center;
+            border-radius: 0;
+            margin-top: -10px;
+        }
+
+        /* Services section */
+        .service-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+        }
+
+        footer .disclaimer {
+            font-size: 0.8rem;
+            max-width: 800px;
+            margin: 10px auto 0 auto;
+            color: #ccc;
+        }
+
+        /* ====== SPLASH SCREEN STYLES ====== */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0d1b2a;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+        }
+
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash-text {
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1>blessedfxxpert</h1>
-            </div>
-            <nav class="nav">
-                <a href="#courses">Courses</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
+    <div id="splash-screen">
+        <div class="splash-text">Welcome Traders</div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">Forex Zimbabwe</div>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <p class="tagline">NEW COURSE</p>
-            <h1>Master Forex Trading <br>Like a <span>Kingpin</span></h1>
-            <p class="description">
-                Learn the secrets of the currency market, master technical analysis, and become a pro trader. Our comprehensive course will equip you with the knowledge and skills to trade profitably.
-            </p>
-            <a href="#courses" class="btn btn-hero">Start Now</a>
-        </div>
-    </section>
+    <main>
+        <section id="hero">
+            <h1>Master the Forex Markets</h1>
+            <p>Your professional trading partner for analysis, education, and strategy in Zimbabwe.</p>
+        </section>
 
-    <section class="trust-section">
-        <div class="container">
-            <div class="trust-card">
-                <div class="trust-card-header">
-                    <img src="https://via.placeholder.com/40/FFC000" alt="Award Icon">
-                    <h3>Awarded By:</h3>
-                </div>
-                <div class="trust-card-body">
-                    <p>Trading Academy</p>
-                    <p>Financial Times</p>
-                    <p>Forbes</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="courses" class="courses-section">
-        <div class="container">
-            <h2 class="section-title">Trading Courses</h2>
-            <p class="section-subtitle">Choose your course and start your trading journey today. Each course is designed to take you from a beginner to an expert.</p>
-
-            <div class="course-card">
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/50/FFC000" alt="Beginner Icon">
-                    <h3>Beginner Fundamentals</h3>
-                </div>
-                <p class="card-description">
-                    Learn the basics of forex trading, key terminology, market types, and how to place your first trade.
-                </p>
-                <p class="price">$19</p>
-                <a href="#" class="btn btn-course">Enroll Now</a>
-            </div>
-
-            <div class="course-card">
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/50/FFC000" alt="Advanced Icon">
-                    <h3>Advanced Strategies</h3>
-                </div>
-                <p class="card-description">
-                    Master technical analysis, advanced chart patterns, and risk management strategies.
-                </p>
-                <p class="price">$60</p>
-                <a href="#" class="btn btn-course">Enroll Now</a>
-            </div>
-
-            <div class="course-card">
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/50/FFC000" alt="Kingpin Icon">
-                    <h3>blessedfxxpert Mastery</h3>
-                </div>
-                <p class="card-description">
-                    This integrated program combines everything from the beginner and advanced courses. Includes lifetime mentorship and live trading sessions.
-                </p>
-                <p class="price">$1000 lifetime</p>
-                <a href="#" class="btn btn-course">Enroll Now</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="cta-section">
-        <div class="container">
-            <h2>Ready to Start Trading Like a Kingpin?</h2>
+        <section id="about">
+            <h2>About Me</h2>
             <p>
-                Join our community and get access to exclusive content, live trading sessions, and a supportive network of fellow traders.
+                Replace this text with your story. I am a dedicated Forex trader based in Chitungwiza with over [Number] years of experience.
+                My passion is helping fellow Zimbabweans navigate the complexities of the financial markets and achieve their goals.
             </p>
-            <a href="#courses" class="btn btn-cta">I'm Ready!</a>
-        </div>
-    </section>
+        </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-col footer-col-logo">
-                <p class="footer-logo">blessedfxxpert</p>
+        <section id="services">
+            <h2>My Services</h2>
+            <div class="service-item">
+                <h3>Trading Courses</h3>
+                <p>Comprehensive courses for beginners and advanced traders covering technical analysis, risk management, and trading psychology.</p>
             </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
+            <div class="service-item">
+                <h3>Market Analysis</h3>
+                <p>Daily or weekly analysis of major currency pairs to help you make informed decisions.</p>
             </div>
-            <div class="footer-col">
-                <h4>Courses</h4>
-                <ul>
-                    <li><a href="#courses">Beginner</a></li>
-                    <li><a href="#courses">Advanced</a></li>
-                    <li><a href="#courses">Mastery</a></li>
-                </ul>
+             <div class="service-item">
+                <h3>One-on-One Mentorship</h3>
+                <p>Personalized coaching to refine your trading strategy and achieve your financial goals.</p>
             </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Testimonials</a></li>
-                </ul>
-            </div>
-            <div class="footer-col footer-col-social">
-                <h4>Follow Us</h4>
-                <div class="social-links">
-                    <a href="#"><img src="https://via.placeholder.com/30/FFFFFF" alt="Facebook"></a>
-                    <a href="#"><img src="https://via.placeholder.com/30/FFFFFF" alt="Twitter"></a>
-                    <a href="#"><img src="https://via.placeholder.com/30/FFFFFF" alt="Instagram"></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 blessedfxxpert. All Rights Reserved.</p>
-        </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p>Have questions or want to get started? Contact me via email or WhatsApp.</p>
+            <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+            <p><strong>WhatsApp:</strong> +263 12 345 6789</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2025 - Your Name</p>
+        <p class="disclaimer">
+            <strong>Risk Disclaimer:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. 
+            The high degree of leverage can work against you as well as for you. Before deciding to trade foreign exchange, you should carefully consider your investment objectives, level of experience, and risk appetite.
+        </p>
     </footer>
+
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const splashScreen = document.getElementById('splash-screen');
+            const body = document.querySelector('body');
+            body.style.overflow = 'hidden';
+
+            setTimeout(() => {
+                splashScreen.classList.add('hidden');
+                body.style.overflow = 'auto';
+            }, 3500);
+        });
+    </script>
 
 </body>
 </html>
