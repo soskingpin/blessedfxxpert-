@@ -3,111 +3,179 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name - Forex Trading Specialist</title>
-  
+  <title>Blessedfxxpert - Forex Trading Specialist</title>
   <style>
-    /* === Your original CSS here === */
-
+    /* Base & Reset */
     body {
+      margin: 0; padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0d1b2a;
+      color: #d4af37;
       line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-
-      /* === NEW: page load animation === */
       opacity: 0;
       transform: translateY(20px);
-      animation: fadeInPage 1s ease-out forwards;
+      animation: fadeInPage 1s ease forwards;
     }
-
     @keyframes fadeInPage {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    a {
+      color: #d4af37;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #f5d76e;
     }
 
-    /* rest of your original CSS remains exactly as you had it */
-    /* header, nav, sections, footer, splash screen, modal, etc. */
+    /* Header */
+    header {
+      background-color: #0a1622;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 1rem 0;
+      box-shadow: 0 2px 6px rgba(212,175,55,0.3);
+      z-index: 1000;
+    }
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .logo {
+      font-size: 1.7rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-family: Georgia, serif;
+      color: #f5d76e;
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      margin: 0; padding: 0;
+    }
+    li {
+      margin-left: 20px;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Main */
+    main {
+      padding-top: 80px;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    /* Hero */
+    #hero {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    #hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #f5d76e;
+      text-shadow: 0 0 6px #d4af37;
+    }
+    #hero p {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #ffd700;
+      text-shadow: 0 0 4px #d4af37;
+    }
+    #hero a.btn {
+      margin-top: 20px;
+      display: inline-block;
+      background-color: #d4af37;
+      color: #162040;
+      padding: 14px 32px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #d4af37;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    #hero a.btn:hover {
+      background-color: #f5d76e;
+      color: #0d1b2a;
+      box-shadow: 0 0 25px #f5d76e;
+    }
+
+    /* Services Section */
+    #services {
+      background: #162040;
+      border-radius: 12px;
+      padding: 40px 20px;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+      color: #f5d76e;
+    }
+    #services h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      text-align: center;
+      text-shadow: 0 0 5px #d4af37;
+    }
+    .package-list {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      font-weight: 600;
+    }
+    .package-list p {
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+      transition: background-color 0.3s, color 0.3s;
+      border-radius: 6px;
+      cursor: default;
+      box-shadow: 0 0 5px rgba(212, 175, 55, 0.2);
+    }
+    .package-list p:hover {
+      background-color: #d4af37;
+      color: #162040;
+      box-shadow: 0 0 12px #d4af37;
+    }
+
   </style>
 </head>
 <body>
-
-  <div id="splash-screen">
-      <div class="splash-text">Welcome Traders</div>
-  </div>
-
   <header>
     <nav>
-      <div class="logo">Forex Zimbabwe</div>
+      <div class="logo">Blessedfxxpert</div>
       <ul>
-        <li><a href="#about">About Me</a></li>
+        <li><a href="#hero">Home</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section id="hero">
-      <h1>Master the Forex Markets</h1>
-      <p>Your professional trading partner for analysis, education, and strategy in Zimbabwe.</p>
-    </section>
-
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        Replace this text with your story. I am a dedicated Forex trader based in Chitungwiza with over [Number] years of experience.
-        My passion is helping fellow Zimbabweans navigate the complexities of the financial markets and achieve their goals.
-      </p>
+      <h1>Master Forex Trading with Blessedfxxpert</h1>
+      <p>Your trusted partner in Zimbabwe for Forex education and mentorship.</p>
+      <a href="contact.html" class="btn">Contact</a>
     </section>
 
     <section id="services">
-      <h2>My Services</h2>
-      <div class="service-item">
-        <h3>Trading Courses</h3>
-        <p>Comprehensive courses for beginners and advanced traders covering technical analysis, risk management, and trading psychology.</p>
+      <h2>Services</h2>
+      <div class="package-list">
+        <p>Mentorship - $150 full course</p>
+        <p>Basics - $65</p>
+        <p>VIP - $45 per month</p>
+        <p>$20 week</p>
+        <p>$1k lifetime</p>
       </div>
-      <div class="service-item">
-        <h3>Market Analysis</h3>
-        <p>Daily or weekly analysis of major currency pairs to help you make informed decisions.</p>
-      </div>
-      <div class="service-item">
-        <h3>One-on-One Mentorship</h3>
-        <p>Personalized coaching to refine your trading strategy and achieve your financial goals.</p>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Get In Touch</h2>
-      <p>Have questions or want to get started? Contact me via email or WhatsApp.</p>
-      <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-      <p><strong>WhatsApp:</strong> +263 12 345 6789</p>
     </section>
   </main>
-
-  <footer>
-    <p>Copyright &copy; 2025 - Your Name</p>
-    <p class="disclaimer">
-      <strong>Risk Disclaimer:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. 
-      The high degree of leverage can work against you as well as for you. Before deciding to trade foreign exchange, you should carefully consider your investment objectives, level of experience, and risk appetite.
-    </p>
-  </footer>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-      const splashScreen = document.getElementById('splash-screen');
-      const body = document.querySelector('body');
-      body.style.overflow = 'hidden';
-
-      setTimeout(() => {
-        splashScreen.classList.add('hidden');
-        body.style.overflow = 'auto';
-      }, 3500);
-    });
-  </script>
-
 </body>
 </html>
