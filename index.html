@@ -31,7 +31,7 @@
     outline: none;
   }
 
-  /* Container with glowing border */
+  /* Container with LED style glowing border outside */
   .container {
     max-width: 960px;
     margin: 60px auto 80px;
@@ -39,16 +39,23 @@
     background: #121212;
     border-radius: 16px;
     position: relative;
-    box-shadow: 0 0 20px #d4af37aa;
+    box-shadow:
+      0 0 10px #d4af37aa,
+      0 0 30px #d4af37aa,
+      0 0 60px #b8860b99,
+      0 0 90px #d4af37cc;
+    border: 4px solid #d4af37;
   }
   .container::before {
     content: "";
     position: absolute;
-    top: -6px; left: -6px; right: -6px; bottom: -6px;
-    border-radius: 22px;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    border-radius: 26px;
     background: linear-gradient(270deg, #d4af37, #b8860b, #d4af37, #b8860b);
     background-size: 600% 600%;
     animation: glowing 10s linear infinite;
+    filter: blur(8px);
+    opacity: 0.75;
     z-index: -1;
   }
   @keyframes glowing {
