@@ -217,3 +217,33 @@ footer .disclaimer {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* ========================= */
+/* == PAGE LOAD ANIMATION == */
+/* ========================= */
+
+body {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInPage 1s ease-out forwards;
+}
+
+@keyframes fadeInPage {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================== */
+/* == PACKAGE BOX EFFECTS ==== */
+/* =========================== */
+
+.service-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background-color: #f9f9f9;
+}
