@@ -1,46 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BlessedFXXperts | Master Forex Trading</title>
   <link rel="stylesheet" href="style.css" />
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".scroll-link").forEach(link => {
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          document.querySelector(link.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    });
+  </script>
 </head>
 <body>
   <header class="hero">
-    <h1>Master Forex Trading<br>Like a <span class="highlight">Blessed Expert</span></h1>
-    <p>Join our expert mentorship and trading programs designed for all levels.</p>
-    <a href="enroll.html" class="btn">Get Started</a>
-  </header>
-
-  <section class="courses">
-    <h2>Our Courses</h2>
+    <div class="hero-content">
+      <h1 class="fade-in">Become a <span class="highlight">Blessed</span> Forex Expert</h1>
+      <p class="fade-in delay">Start your trading journey with expert mentorship.</p>
+      <a href="#courses" class="btn scroll-link fade-in delay-2">Get Started</a>
+    </div>
+  </header>  <section id="courses" class="courses section">
+    <h2 class="section-title">Our Packages</h2>
     <div class="course-list">
-      <div class="course">
+      <div class="course card fade-in">
         <h3>Mentorship</h3>
         <p>$150 Full Course</p>
-        <a href="https://wa.me/263789385081?text=Hello%20BlessedFXXperts.%20I'm%20interested%20in%20the%20Mentorship%20package%20($150).%20Please%20assist." class="btn">Enroll Now</a>
+        <a href="https://wa.me/263789385081?text=Hello%20BlessedFXXperts.%20I'm%20interested%20in%20the%20Mentorship%20package%20($150).%20Please%20assist." class="btn">Join Now</a>
       </div>
-      <div class="course">
+      <div class="course card fade-in delay">
         <h3>Basic</h3>
         <p>$65</p>
-        <a href="https://wa.me/263789385081?text=Hello%20BlessedFXXperts.%20I'm%20interested%20in%20the%20Basic%20package%20($65).%20Please%20assist." class="btn">Enroll Now</a>
+        <a href="https://wa.me/263789385081?text=Hello%20BlessedFXXperts.%20I'm%20interested%20in%20the%20Basic%20package%20($65).%20Please%20assist." class="btn">Join Now</a>
       </div>
-      <div class="course">
+      <div class="course card fade-in delay-2">
         <h3>VIP</h3>
-        <p>$45 per month</p>
-        <a href="https://wa.me/263789385081?text=Hello%20BlessedFXXperts.%20I'm%20interested%20in%20the%20VIP%20package%20($45%2Fmonth).%20Please%20assist." class="btn">Enroll Now</a>
+        <p>$45/month</p>
+        <a href="https://wa.me/263789385081?text=Hello%20BlessedFXXperts.%20I'm%20interested%20in%20the%20VIP%20package%20($45/month).%20Please%20assist." class="btn">Join Now</a>
       </div>
-      <div class="course">
+      <div class="course card fade-in delay-3">
         <h3>20-Week Lifetime</h3>
         <p>$1,000</p>
-        <a href="https://wa.me/263789385081?text=Hello%20BlessedFXXperts.%20I'm%20interested%20in%20the%2020-Week%20Lifetime%20package%20($1000).%20Please%20assist." class="btn">Enroll Now</a>
+        <a href="https://wa.me/263789385081?text=Hello%20BlessedFXXperts.%20I'm%20interested%20in%20the%2020-Week%20Lifetime%20package%20($1000).%20Please%20assist." class="btn">Join Now</a>
       </div>
     </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 BlessedFXXperts. All rights reserved.</p>
+  </section>  <section class="why-us section">
+    <h2 class="section-title">Why Choose BlessedFXXperts?</h2>
+    <ul class="features">
+      <li>✅ Personalized mentorship for real-world trading</li>
+      <li>✅ Affordable packages with lifetime access options</li>
+      <li>✅ Direct WhatsApp support & daily analysis</li>
+      <li>✅ Beginner to advanced levels covered</li>
+    </ul>
+  </section>  <section class="contacts section">
+    <h2 class="section-title">Connect With Us</h2>
+    <div class="socials">
+      <a href="https://wa.me/263789385081" class="btn">WhatsApp</a>
+      <a href="https://www.facebook.com/share/16kgW17azL/?mibextid=wwXIfr" class="btn">Facebook</a>
+      <a href="https://www.instagram.com/blessing_forex_xperts/profilecard/?igsh=MWtid2M5dXhkZW8zdg==" class="btn">Instagram</a>
+      <a href="mailto:Bdpvtltd1@gmail.com" class="btn">Email</a>
+      <a href="https://youtube.com/@blessingfxguru?si=jrrsc4mTZpiOwGQx" class="btn">YouTube</a>
+    </div>
+  </section>  <footer>
+    <p>&copy; 2025 BlessedFXXperts. Built for success.</p>
   </footer>
 </body>
 </html>
