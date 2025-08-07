@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blessing FX Xperts | Forex Mentor Zimbabwe</title>
+  <title>Your Name - Forex Trading Specialist</title>
+  
   <style>
-    /* === Existing CSS (truncated for brevity) === */
+    /* === Your original CSS here === */
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
@@ -13,8 +15,8 @@
       padding: 0;
       background-color: #f4f4f4;
       color: #333;
-      
-      /* NEW PAGE LOAD ANIMATION */
+
+      /* === NEW: page load animation === */
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInPage 1s ease-out forwards;
@@ -27,27 +29,14 @@
       }
     }
 
-    /* === The rest of your CSS stays unchanged === */
-    /* (Include all your existing styles here or via linked CSS file) */
-
-    /* Header and Navigation */
-    header {
-      background-color: #0d1b2a;
-      color: #fff;
-      padding: 1rem 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-    }
-
-    /* ... other CSS omitted for brevity ... */
+    /* rest of your original CSS remains exactly as you had it */
+    /* header, nav, sections, footer, splash screen, modal, etc. */
   </style>
 </head>
 <body>
 
   <div id="splash-screen">
-    <div class="splash-text">Welcome Traders</div>
+      <div class="splash-text">Welcome Traders</div>
   </div>
 
   <header>
@@ -57,7 +46,6 @@
         <li><a href="#about">About Me</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="packages.html">Start Now</a></li> <!-- Added Start Now link -->
       </ul>
     </nav>
   </header>
@@ -66,13 +54,12 @@
     <section id="hero">
       <h1>Master the Forex Markets</h1>
       <p>Your professional trading partner for analysis, education, and strategy in Zimbabwe.</p>
-      <p><a href="packages.html" style="color:#fff; background:#1b263b; padding:10px 20px; border-radius:5px; text-decoration:none;">Start Now</a></p>
     </section>
 
     <section id="about">
       <h2>About Me</h2>
       <p>
-        I am a dedicated Forex trader based in Chitungwiza with over 3 years of experience.
+        Replace this text with your story. I am a dedicated Forex trader based in Chitungwiza with over [Number] years of experience.
         My passion is helping fellow Zimbabweans navigate the complexities of the financial markets and achieve their goals.
       </p>
     </section>
@@ -96,36 +83,20 @@
     <section id="contact">
       <h2>Get In Touch</h2>
       <p>Have questions or want to get started? Contact me via email or WhatsApp.</p>
-      <p><strong>Email:</strong> <a href="mailto:Bdpvtltd1@gmail.com">Bdpvtltd1@gmail.com</a></p>
-      <p><strong>WhatsApp:</strong> +263 78 938 5081</p>
+      <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+      <p><strong>WhatsApp:</strong> +263 12 345 6789</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 - Blessing FX Xperts</p>
+    <p>Copyright &copy; 2025 - Your Name</p>
     <p class="disclaimer">
       <strong>Risk Disclaimer:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. 
       The high degree of leverage can work against you as well as for you. Before deciding to trade foreign exchange, you should carefully consider your investment objectives, level of experience, and risk appetite.
     </p>
   </footer>
 
-  <!-- Contact Modal -->
-  <div id="contact-modal" class="modal" style="display:none;">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <h2>Contact Me</h2>
-      <ul class="contact-list">
-        <li><strong>WhatsApp:</strong> <a href="https://wa.me/263789385081" target="_blank">+263 78 938 5081</a></li>
-        <li><strong>Facebook:</strong> <a href="https://www.facebook.com/share/16kgW17azL/?mibextid=wwXIfr" target="_blank">Visit Page</a></li>
-        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/blessing_forex_xperts/profilecard/?igsh=MWtid2M5dXhkZW8zdg==" target="_blank">@blessing_forex_xperts</a></li>
-        <li><strong>YouTube:</strong> <a href="https://youtube.com/@blessingfxguru?si=jrrsc4mTZpiOwGQx" target="_blank">Blessing FX Guru</a></li>
-        <li><strong>Email:</strong> <a href="mailto:Bdpvtltd1@gmail.com">Bdpvtltd1@gmail.com</a></li>
-      </ul>
-    </div>
-  </div>
-
   <script>
-    // Splash screen
     window.addEventListener('DOMContentLoaded', (event) => {
       const splashScreen = document.getElementById('splash-screen');
       const body = document.querySelector('body');
@@ -136,23 +107,7 @@
         body.style.overflow = 'auto';
       }, 3500);
     });
-
-    // Contact modal open/close
-    document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('contact-modal').style.display = 'block';
-    });
-
-    document.querySelector('.close-btn').addEventListener('click', function() {
-      document.getElementById('contact-modal').style.display = 'none';
-    });
-
-    window.addEventListener('click', function(e) {
-      const modal = document.getElementById('contact-modal');
-      if (e.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
   </script>
+
 </body>
 </html>
