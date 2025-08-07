@@ -1,231 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Your Name - Forex Trading Specialist</title>
-    
-    <style>
-        /* ================================== */
-        /* ====== ALL CSS STYLING HERE ====== */
-        /* ================================== */
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blessing FX Xperts | Forex Mentor Zimbabwe</title>
 
-        /* Basic Setup */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+  <style>
+    /* Basic Setup */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
 
-        h1, h2 {
-            font-weight: 300;
-        }
+    h1, h2 {
+      font-weight: 300;
+    }
 
-        /* Header and Navigation */
-        header {
-            background-color: #0d1b2a; /* Dark Blue */
-            color: #fff;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000; /* Make sure header is above content but below splash */
-        }
+    /* Header and Navigation */
+    header {
+      background-color: #0d1b2a;
+      color: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
 
-        nav {
-            max-width: 1100px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
 
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
 
-        nav ul li {
-            padding: 0 15px;
-        }
+    nav ul li {
+      padding: 0 15px;
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
 
-        /* Main Content & Sections */
-        main {
-            padding-top: 70px; /* To offset the fixed header */
-        }
+    /* Main Content & Sections */
+    main {
+      padding-top: 70px;
+    }
 
-        section {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 40px 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 40px 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
 
-        #hero {
-            background: #1b263b; /* Another shade of blue */
-            color: #fff;
-            text-align: center;
-            border-radius: 0;
-            margin-top: -10px;
-        }
+    #hero {
+      background: #1b263b;
+      color: #fff;
+      text-align: center;
+      border-radius: 0;
+      margin-top: -10px;
+    }
 
-        /* Services section */
-        .service-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
+    .service-item {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #333;
-            color: #fff;
-        }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: #fff;
+    }
 
-        footer .disclaimer {
-            font-size: 0.8rem;
-            max-width: 800px;
-            margin: 10px auto 0 auto;
-            color: #ccc;
-        }
+    footer .disclaimer {
+      font-size: 0.8rem;
+      max-width: 800px;
+      margin: 10px auto 0 auto;
+      color: #ccc;
+    }
 
-        /* ====== SPLASH SCREEN STYLES ====== */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0d1b2a;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 1s ease-out, visibility 1s ease-out;
-        }
+    /* Splash Screen */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #0d1b2a;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 1s ease-out, visibility 1s ease-out;
+    }
 
-        #splash-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
+    #splash-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
 
-        .splash-text {
-            color: white;
-            font-size: 3rem;
-            font-weight: bold;
-            text-align: center;
-            animation: fadeInUp 1.5s ease-out forwards;
-        }
+    .splash-text {
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      text-align: center;
+      animation: fadeInUp 1.5s ease-out forwards;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ======= MODAL STYLES ======= */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      position: relative;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #0d1b2a;
+      text-align: center;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .contact-list li a {
+      color: #1b263b;
+      text-decoration: none;
+    }
+
+    .contact-list li a:hover {
+      text-decoration: underline;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #999;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-    <div id="splash-screen">
-        <div class="splash-text">Welcome Traders</div>
+  <div id="splash-screen">
+    <div class="splash-text">Welcome Traders</div>
+  </div>
+
+  <header>
+    <nav>
+      <div class="logo">Forex Zimbabwe</div>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero">
+      <h1>Master the Forex Markets</h1>
+      <p>Your professional trading partner for analysis, education, and strategy in Zimbabwe.</p>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a dedicated Forex trader based in Chitungwiza with over 3 years of experience.
+        My passion is helping fellow Zimbabweans navigate the complexities of the financial markets and achieve their goals.
+      </p>
+    </section>
+
+    <section id="services">
+      <h2>My Services</h2>
+      <div class="service-item">
+        <h3>Trading Courses</h3>
+        <p>Comprehensive courses for beginners and advanced traders covering technical analysis, risk management, and trading psychology.</p>
+      </div>
+      <div class="service-item">
+        <h3>Market Analysis</h3>
+        <p>Daily or weekly analysis of major currency pairs to help you make informed decisions.</p>
+      </div>
+      <div class="service-item">
+        <h3>One-on-One Mentorship</h3>
+        <p>Personalized coaching to refine your trading strategy and achieve your financial goals.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Blessing FX Xperts</p>
+    <p class="disclaimer">
+      <strong>Risk Disclaimer:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. 
+      The high degree of leverage can work against you as well as for you. Before deciding to trade foreign exchange, you should carefully consider your investment objectives, level of experience, and risk appetite.
+    </p>
+  </footer>
+
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Contact Me</h2>
+      <ul class="contact-list">
+        <li><strong>WhatsApp:</strong> <a href="https://wa.me/263789385081" target="_blank">+263 78 938 5081</a></li>
+        <li><strong>Facebook:</strong> <a href="https://www.facebook.com/share/16kgW17azL/?mibextid=wwXIfr" target="_blank">Visit Page</a></li>
+        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/blessing_forex_xperts/profilecard/?igsh=MWtid2M5dXhkZW8zdg==" target="_blank">@blessing_forex_xperts</a></li>
+        <li><strong>YouTube:</strong> <a href="https://youtube.com/@blessingfxguru?si=jrrsc4mTZpiOwGQx" target="_blank">Blessing FX Guru</a></li>
+        <li><strong>Email:</strong> <a href="mailto:Bdpvtltd1@gmail.com">Bdpvtltd1@gmail.com</a></li>
+      </ul>
     </div>
+  </div>
 
-    <header>
-        <nav>
-            <div class="logo">Forex Zimbabwe</div>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <script>
+    // Splash screen
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const splashScreen = document.getElementById('splash-screen');
+      const body = document.querySelector('body');
+      body.style.overflow = 'hidden';
 
-    <main>
-        <section id="hero">
-            <h1>Master the Forex Markets</h1>
-            <p>Your professional trading partner for analysis, education, and strategy in Zimbabwe.</p>
-        </section>
+      setTimeout(() => {
+        splashScreen.classList.add('hidden');
+        body.style.overflow = 'auto';
+      }, 3500);
+    });
 
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                Replace this text with your story. I am a dedicated Forex trader based in Chitungwiza with over [Number] years of experience.
-                My passion is helping fellow Zimbabweans navigate the complexities of the financial markets and achieve their goals.
-            </p>
-        </section>
+    // Contact modal functionality
+    document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('contact-modal').style.display = 'block';
+    });
 
-        <section id="services">
-            <h2>My Services</h2>
-            <div class="service-item">
-                <h3>Trading Courses</h3>
-                <p>Comprehensive courses for beginners and advanced traders covering technical analysis, risk management, and trading psychology.</p>
-            </div>
-            <div class="service-item">
-                <h3>Market Analysis</h3>
-                <p>Daily or weekly analysis of major currency pairs to help you make informed decisions.</p>
-            </div>
-             <div class="service-item">
-                <h3>One-on-One Mentorship</h3>
-                <p>Personalized coaching to refine your trading strategy and achieve your financial goals.</p>
-            </div>
-        </section>
+    document.querySelector('.close-btn').addEventListener('click', function() {
+      document.getElementById('contact-modal').style.display = 'none';
+    });
 
-        <section id="contact">
-            <h2>Get In Touch</h2>
-            <p>Have questions or want to get started? Contact me via email or WhatsApp.</p>
-            <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-            <p><strong>WhatsApp:</strong> +263 12 345 6789</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>Copyright &copy; 2025 - Your Name</p>
-        <p class="disclaimer">
-            <strong>Risk Disclaimer:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. 
-            The high degree of leverage can work against you as well as for you. Before deciding to trade foreign exchange, you should carefully consider your investment objectives, level of experience, and risk appetite.
-        </p>
-    </footer>
-
-
-    <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            const splashScreen = document.getElementById('splash-screen');
-            const body = document.querySelector('body');
-            body.style.overflow = 'hidden';
-
-            setTimeout(() => {
-                splashScreen.classList.add('hidden');
-                body.style.overflow = 'auto';
-            }, 3500);
-        });
-    </script>
-
+    window.addEventListener('click', function(e) {
+      const modal = document.getElementById('contact-modal');
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
