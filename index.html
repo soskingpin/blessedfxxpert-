@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -394,84 +393,6 @@
     color: #ccc;
     flex-grow: 1;
     margin-bottom: 20px;
-  }
-
-  /* Animated Pricing Cards */
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-  }
-  .pricing-card {
-    background: rgba(25, 25, 25, 0.8);
-    padding: 30px;
-    border-radius: 10px;
-    position: relative;
-    transition: all 0.5s ease;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .pricing-card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 15px 30px rgba(128, 0, 128, 0.3);
-    border-color: rgba(128, 0, 128, 0.6);
-  }
-  .popular-badge {
-    position: absolute;
-    top: -15px;
-    right: 20px;
-    background: linear-gradient(to right, var(--gold), var(--purple));
-    color: var(--dark);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    animation: pulseBadge 2s infinite;
-  }
-  @keyframes pulseBadge {
-    0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
-  }
-  .pricing-card h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: var(--gold);
-  }
-  .price {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 20px 0;
-    background: linear-gradient(to right, var(--gold), var(--purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .pricing-card ul {
-    list-style: none;
-    margin-bottom: 20px;
-    flex-grow: 1;
-  }
-  .pricing-card li {
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 25px;
-    color: #ccc;
-  }
-  .pricing-card li:before {
-    content: "✓";
-    color: var(--gold);
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-  }
-  .pricing-card .btn {
-    margin-top: auto;
   }
 
   /* Testimonials Section - New */
@@ -911,7 +832,6 @@
       display: block;
     }
     .info-grid,
-    .pricing-grid,
     .testimonial-grid {
       grid-template-columns: 1fr;
     }
@@ -922,21 +842,16 @@
 </style>
 </head>
 <body>
-<!-- Trading Dashboard Animation -->
 <div class="dashboard" id="dashboard"></div>
 
-<!-- Falling Money -->
 <div id="moneyContainer"></div>
 
-<!-- Candlesticks -->
 <div id="candlestickContainer"></div>
 
-<!-- Floating WhatsApp Button -->
 <a href="https://wa.me/263789385081" class="whatsapp-float" target="_blank">
   <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- Navigation -->
 <nav class="container">
   <div class="logo">
     <i class="fas fa-chart-line"></i>
@@ -944,7 +859,6 @@
   </div>
   <div class="nav-links" id="navLinks">
     <a href="#">Home</a>
-    <a href="#services">Services</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
   </div>
@@ -953,19 +867,17 @@
   </button>
 </nav>
 
-<!-- Hero Section -->
 <section class="hero">
   <div class="container">
     <h1>Master Forex Trading in Zimbabwe</h1>
     <p>Professional trading analysis, education, and strategy development to help you succeed in the volatile forex markets. Join our community of successful traders today!</p>
     <div class="hero-btns">
-      <a href="#services" class="btn">Explore Services</a>
+      <a href="#testimonials" class="btn">Hear Success Stories</a>
       <a href="#contact" class="btn btn-secondary">Free Consultation</a>
     </div>
   </div>
 </section>
 
-<!-- Stats Section -->
 <section class="stats">
   <div class="container">
     <div class="stats-grid">
@@ -993,7 +905,6 @@
   </div>
 </section>
 
-<!-- Info Boxes -->
 <section class="container">
   <h2>Start Your Trading Journey</h2>
   <div class="info-grid">
@@ -1007,7 +918,6 @@
       <i class="fas fa-wallet"></i>
       <h3>Open Your Trading Account 💳</h3>
       <p>Get step-by-step guidance to set up a Forex account with trusted brokers. We'll help you choose the best platform for your trading style.</p>
-      <!-- Updated button link -->
       <button class="btn" onclick="window.location.href='https://track.deriv.com/_FkLIUymA9QBMjdsyM5hasGNd7ZgqdRLk/1/'">Open Account</button>
     </div>
     <div class="info-box">
@@ -1019,77 +929,6 @@
   </div>
 </section>
 
-<!-- Services Section -->
-<section id="services" class="container">
-  <h2>Our Trading Packages</h2>
-  <div class="pricing-grid">
-    <div class="pricing-card">
-      <h3>🎓 Mentorship</h3>
-      <div class="price">$150</div>
-      <p>Personalized coaching and expert guidance to master Forex trading.</p>
-      <ul>
-        <li>One-on-one sessions</li>
-        <li>Custom trading plan</li>
-        <li>Market analysis training</li>
-        <li>Risk management strategies</li>
-      </ul>
-      <button class="btn enroll-btn" data-package="Mentorship ($150 full course)">Enroll Now</button>
-    </div>
-    <div class="pricing-card">
-      <h3>📘 Basics</h3>
-      <div class="price">$65</div>
-      <p>Beginner-friendly package covering technical analysis and trading essentials.</p>
-      <ul>
-        <li>Forex fundamentals</li>
-        <li>Chart reading techniques</li>
-        <li>Basic strategies</li>
-        <li>Demo account setup</li>
-      </ul>
-      <button class="btn enroll-btn" data-package="Basics ($65)">Enroll Now</button>
-    </div>
-    <div class="pricing-card">
-      <span class="popular-badge">MOST POPULAR</span>
-      <h3>👑 VIP</h3>
-      <div class="price">$45 <small>/ month</small></div>
-      <p>Monthly subscription for market analysis, signals, and exclusive tips.</p>
-      <ul>
-        <li>Daily trade signals</li>
-        <li>Market analysis reports</li>
-        <li>Priority support</li>
-        <li>Weekly webinars</li>
-        <li>Community access</li>
-      </ul>
-      <button class="btn enroll-btn" data-package="VIP ($45/month)">Enroll Now</button>
-    </div>
-    <div class="pricing-card">
-      <h3>⏳ Weekly</h3>
-      <div class="price">$20 <small>/ week</small></div>
-      <p>Affordable weekly insights and strategy updates.</p>
-      <ul>
-        <li>Weekly market analysis</li>
-        <li>3-5 trade signals</li>
-        <li>Email support</li>
-        <li>Strategy updates</li>
-      </ul>
-      <button class="btn enroll-btn" data-package="Weekly ($20/week)">Enroll Now</button>
-    </div>
-    <div class="pricing-card">
-      <h3>💰 Lifetime</h3>
-      <div class="price">$1,000</div>
-      <p>Lifetime access to all courses, mentorship, signals, and exclusive content.</p>
-      <ul>
-        <li>All current courses</li>
-        <li>Future content updates</li>
-        <li>VIP signals forever</li>
-        <li>Personal mentorship</li>
-        <li>Premium community</li>
-      </ul>
-      <button class="btn enroll-btn" data-package="Lifetime ($1000)">Enroll Now</button>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials Section -->
 <section id="testimonials" class="testimonials">
   <div class="container">
     <h2>Success Stories</h2>
@@ -1105,7 +944,7 @@
         </div>
       </div>
       <div class="testimonial-card">
-        <p class="testimonial-text">"The VIP package is worth every dollar. The daily signals and analysis have helped me navigate the volatile Zim market successfully."</p>
+        <p class="testimonial-text">"The daily signals and analysis have helped me navigate the volatile Zim market successfully."</p>
         <div class="testimonial-author">
           <div class="author-avatar">SM</div>
           <div class="author-info">
@@ -1115,7 +954,7 @@
         </div>
       </div>
       <div class="testimonial-card">
-        <p class="testimonial-text">"As a beginner, the Basics course gave me the confidence to start trading. The mentorship program took me to the next level."</p>
+        <p class="testimonial-text">"The mentorship program took me to the next level, the daily signals were a bonus."</p>
         <div class="testimonial-author">
           <div class="author-avatar">JM</div>
           <div class="author-info">
@@ -1128,7 +967,6 @@
   </div>
 </section>
 
-<!-- Contact Section -->
 <section id="contact" class="container">
 <h2>Contact Us</h2>
 <div class="contact-grid">
@@ -1154,7 +992,6 @@
 </div>
 </section>
 
-<!-- Enrollment Popup -->
 <div class="enrollment-popup" id="enrollmentPopup">
 <div class="popup-content">
 <span class="close-popup" onclick="closePopup()">&times;</span>
@@ -1167,7 +1004,6 @@
 </div>
 </div>
 
-<!-- Choice Modal -->
 <div class="choice-modal" id="choiceModal">
 <div class="choice-content">
 <h3>How would you like to learn?</h3>
@@ -1184,12 +1020,10 @@
 </div>
 </div>
 
-<!-- Floating WhatsApp Button -->
 <a href="https://wa.me/263789385081" class="whatsapp-float" target="_blank">
 <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- Footer -->
 <footer>
 <div class="container">
 <div class="footer-logo">Blessed Forexpert</div>
@@ -1197,7 +1031,6 @@
 
 <div class="footer-links">
 <a href="#">Home</a>
-<a href="#services">Services</a>
 <a href="#testimonials">Testimonials</a>
 <a href="#contact">Contact</a>
 <a href="#">Privacy Policy</a>
@@ -1270,7 +1103,7 @@
     });
 
     // Enhanced card animations
-    const cards = document.querySelectorAll('.info-box, .pricing-card, .contact-card, .testimonial-card');
+    const cards = document.querySelectorAll('.info-box, .contact-card, .testimonial-card');
     cards.forEach((card, index) => {
       card.style.animationDelay = `${index * 0.1}s`;
       card.addEventListener('mousemove', (e) => {
@@ -1345,88 +1178,5 @@
     });
   });
 </script>
-</body>
-</html>
-```
-
-**Summary of change**:
-- I replaced the `onclick` attribute of the "Open Your Trading Account 💳" button to navigate to your specified link directly.
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blessed Forexpert - Professional Forex Trading in Zimbabwe</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-<style>
-  /* Global Styles */
-  :root {
-    --gold: #FFD700;
-    --dark-gold: #CFB53B;
-    --purple: #800080;
-    --dark-purple: #4B0082;
-    --dark: #121212;
-    --light: #f8f9fa;
-    --success: #25D366;
-    --danger: #FF3860;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', 'Arial', sans-serif;
-  }
-  body {
-    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
-    color: white;
-    overflow-x: hidden;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  /* Make all cards lime green and add shake animation on click */
-  .info-box, .pricing-card {
-    border: 2px solid limegreen;
-    box-shadow: 0 0 15px limegreen;
-    transition: all 0.3s ease;
-  }
-
-  /* Shake animation for click effect */
-  @keyframes shake {
-    0% { transform: translate(0, 0); }
-    20% { transform: translate(-5px, 0); }
-    40% { transform: translate(5px, 0); }
-    60% { transform: translate(-5px, 0); }
-    80% { transform: translate(5px, 0); }
-    100% { transform: translate(0, 0); }
-  }
-
-  /* Existing styles (trimmed for brevity, include all your styles here) */
-  /* ... your existing CSS ... */
-
-  /* For demonstration, here's just the relevant parts for the animated shake, rest are unchanged */
-</style>
-</head>
-<body>
-
-<!-- Your existing content... -->
-
-<!-- The rest of your page content remains unchanged -->
-
-<!-- Your existing scripts and content -->
-
-<script>
-  // Add click event to all cards to shake
-  document.querySelectorAll('.info-box, .pricing-card').forEach(card => {
-    card.addEventListener('click', () => {
-      card.style.animation = 'shake 0.5s';
-      card.addEventListener('animationend', () => {
-        card.style.animation = '';
-      }, { once: true });
-    });
-  });
-</script>
-
 </body>
 </html>
