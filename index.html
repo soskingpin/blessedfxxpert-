@@ -1,1385 +1,1432 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blessed Forexpert - Professional Forex Trading in Zimbabwe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Global Styles */
-        :root {
-            --gold: #FFD700;
-            --dark-gold: #CFB53B;
-            --purple: #800080;
-            --dark-purple: #4B0082;
-            --dark: #121212;
-            --light: #f8f9fa;
-            --success: #25D366;
-            --danger: #FF3860;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', 'Arial', sans-serif;
-        }
-        body {
-            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
-            color: white;
-            overflow-x: hidden;
-            position: relative;
-            line-height: 1.6;
-        }
-        
-        /* New: Trading Dashboard Animation */
-        .dashboard {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -2;
-            opacity: 0.1;
-        }
-        .chart-line {
-            position: absolute;
-            background: rgba(255, 215, 0, 0.2);
-            height: 1px;
-            animation: chart-move 15s infinite linear;
-        }
-        .chart-line:nth-child(2n) {
-            background: rgba(128, 0, 128, 0.2);
-        }
-        @keyframes chart-move {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        /* Falling Money Animation */
-        .money {
-            position: absolute;
-            color: var(--gold);
-            font-size: 20px;
-            animation: falling linear infinite;
-            z-index: -1;
-            user-select: none;
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-        }
-        
-        @keyframes falling {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(calc(100vh + 100px)) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Candlestick Animation */
-        .candlestick {
-            position: fixed;
-            bottom: 0;
-            width: 30px;
-            background: linear-gradient(to top, var(--gold), var(--purple));
-            animation: candlestick-move 8s infinite alternate ease-in-out;
-            z-index: -1;
-            border-radius: 5px 5px 0 0;
-        }
-        
-        @keyframes candlestick-move {
-            0%, 100% {
-                height: 50px;
-                left: 10%;
-            }
-            25% {
-                height: 120px;
-                left: 30%;
-            }
-            50% {
-                height: 30px;
-                left: 50%;
-            }
-            75% {
-                height: 90px;
-                left: 70%;
-            }
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blessed Forexpert - Professional Forex Trading in Zimbabwe</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  /* Global Styles */
+  :root {
+    --gold: #FFD700;
+    --dark-gold: #CFB53B;
+    --purple: #800080;
+    --dark-purple: #4B0082;
+    --dark: #121212;
+    --light: #f8f9fa;
+    --success: #25D366;
+    --danger: #FF3860;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Arial', sans-serif;
+  }
+  body {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+  }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
-            color: var(--dark);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
-        }
-        .btn:active {
-            transform: translateY(1px);
-        }
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(45deg);
-            animation: btn-shine 3s infinite;
-        }
-        
-        @keyframes btn-shine {
-            0% { left: -50%; }
-            100% { left: 150%; }
-        }
-        
-        section {
-            padding: 80px 0;
-            position: relative;
-        }
-        h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-            text-align: center;
-            background: linear-gradient(to right, var(--gold), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(128, 0, 128, 0.3);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, var(--gold), var(--purple));
-            border-radius: 2px;
-        }
+  /* New: Trading Dashboard Animation */
+  .dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -2;
+    opacity: 0.1;
+  }
+  .chart-line {
+    position: absolute;
+    background: rgba(255, 215, 0, 0.2);
+    height: 1px;
+    animation: chart-move 15s infinite linear;
+  }
+  .chart-line:nth-child(2n) {
+    background: rgba(128, 0, 128, 0.2);
+  }
+  @keyframes chart-move {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
 
-        /* Navbar */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            background: linear-gradient(to right, var(--gold), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(128, 0, 128, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo i {
-            font-size: 28px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-            position: relative;
-            font-weight: 500;
-        }
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: 0.3s;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
+  /* Falling Money Animation */
+  .money {
+    position: absolute;
+    color: var(--gold);
+    font-size: 20px;
+    animation: falling linear infinite;
+    z-index: -1;
+    user-select: none;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            background: linear-gradient(135deg, #1a1a1a, #000);
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, rgba(0,0,0,0) 70%);
-            animation: pulse 8s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.1; }
-            100% { transform: scale(1.2); opacity: 0.3; }
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, var(--gold), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 15px rgba(128, 0, 128, 0.3);
-            line-height: 1.2;
-        }
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-            color: #ddd;
-        }
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            box-shadow: none;
-        }
-        .btn-secondary:hover {
-            background: rgba(255, 215, 0, 0.1);
-        }
-        .btn-secondary::after {
-            display: none;
-        }
+  @keyframes falling {
+    0% {
+      transform: translateY(-100px) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(calc(100vh + 100px)) rotate(360deg);
+      opacity: 0;
+    }
+  }
 
-        /* Stats Section - New */
-        .stats {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 50px 0;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-        .stat-box {
-            padding: 20px;
-        }
-        .stat-box i {
-            font-size: 40px;
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-        .stat-number {
-            font-size: 40px;
-            font-weight: bold;
-            background: linear-gradient(to right, var(--gold), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-        .stat-text {
-            color: #ccc;
-            font-size: 18px;
-        }
+  /* Candlestick Animation */
+  .candlestick {
+    position: fixed;
+    bottom: 0;
+    width: 30px;
+    background: linear-gradient(to top, var(--gold), var(--purple));
+    animation: candlestick-move 8s infinite alternate ease-in-out;
+    z-index: -1;
+    border-radius: 5px 5px 0 0;
+  }
 
-        /* Animated Info Boxes */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        .info-box {
-            background: rgba(25, 25, 25, 0.8);
-            padding: 30px;
-            border-radius: 10px;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .info-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(255, 215, 0, 0.1),
-                transparent
-            );
-            transform: translateX(-100%);
-            animation: shine 3s infinite;
-        }
-        
-        @keyframes shine {
-            100% {
-                transform: translateX(100%);
-            }
-        }
-        
-        .info-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
-            border-color: rgba(255, 215, 0, 0.6);
-        }
-        
-        .info-box i {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: var(--gold);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-        .info-box h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--gold);
-        }
-        .info-box p {
-            color: #ccc;
-            flex-grow: 1;
-            margin-bottom: 20px;
-        }
+  @keyframes candlestick-move {
+    0%, 100% {
+      height: 50px;
+      left: 10%;
+    }
+    25% {
+      height: 120px;
+      left: 30%;
+    }
+    50% {
+      height: 30px;
+      left: 50%;
+    }
+    75% {
+      height: 90px;
+      left: 70%;
+    }
+  }
 
-        /* Animated Pricing Cards */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        .pricing-card {
-            background: rgba(25, 25, 25, 0.8);
-            padding: 30px;
-            border-radius: 10px;
-            position: relative;
-            transition: all 0.5s ease;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(128, 0, 128, 0.3);
-            border-color: rgba(128, 0, 128, 0.6);
-        }
-        
-        .popular-badge {
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            background: linear-gradient(to right, var(--gold), var(--purple));
-            color: var(--dark);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-            animation: pulseBadge 2s infinite;
-        }
-        
-        @keyframes pulseBadge {
-            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
-        }
-        
-        .pricing-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--gold);
-        }
-        .price {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 20px 0;
-            background: linear-gradient(to right, var(--gold), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .pricing-card ul {
-            list-style: none;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-        .pricing-card li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 25px;
-            color: #ccc;
-        }
-        .pricing-card li:before {
-            content: "✓";
-            color: var(--gold);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-        .pricing-card .btn {
-            margin-top: auto;
-        }
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+    color: var(--dark);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(45deg);
+    animation: btn-shine 3s infinite;
+  }
 
-        /* Testimonials Section - New */
-        .testimonials {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 80px 0;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        .testimonial-card {
-            background: rgba(25, 25, 25, 0.8);
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            position: relative;
-        }
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 80px;
-            color: rgba(255, 215, 0, 0.2);
-            font-family: serif;
-            line-height: 1;
-        }
-        .testimonial-text {
-            margin-bottom: 20px;
-            font-style: italic;
-            color: #ddd;
-            position: relative;
-            z-index: 1;
-        }
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--purple));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-        }
-        .author-info h4 {
-            color: var(--gold);
-            margin-bottom: 5px;
-        }
-        .author-info p {
-            color: #aaa;
-            font-size: 14px;
-        }
+  @keyframes btn-shine {
+    0% { left: -50%; }
+    100% { left: 150%; }
+  }
+  section {
+    padding: 80px 0;
+    position: relative;
+  }
+  h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(128, 0, 128, 0.3);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+    border-radius: 2px;
+  }
 
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .contact-card {
-            background: rgba(25, 25, 25, 0.8);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.5s ease;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(128, 0, 128, 0.3);
-        }
-        
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--gold), var(--purple));
-            animation: contact-shine 3s infinite;
-        }
-        
-        @keyframes contact-shine {
-            0% { width: 0; left: 0; }
-            50% { width: 100%; left: 0; }
-            100% { width: 0; left: 100%; }
-        }
-        
-        .contact-card i {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: var(--gold);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 40px 0;
-        }
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--gold);
-            font-size: 24px;
-            transition: all 0.3s ease;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-        .social-links a:hover {
-            color: var(--purple);
-            transform: translateY(-5px);
-            background: rgba(255, 215, 0, 0.1);
-        }
+  /* Navbar */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  }
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(128, 0, 128, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo i {
+    font-size: 28px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 30px;
+  }
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    position: relative;
+    font-weight: 500;
+  }
+  .nav-links a:hover {
+    color: var(--gold);
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: 0.3s;
+  }
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
 
-        /* Enrollment Popup */
-        .enrollment-popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .popup-content {
-            background: linear-gradient(135deg, #1a1a1a, #000);
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            border: 2px solid var(--gold);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-            animation: popupEntry 0.8s ease-out forwards, shake 0.5s 0.8s;
-            transform: translateY(-100vh);
-        }
-        
-        @keyframes popupEntry {
-            0% { transform: translateY(-100vh); }
-            80% { transform: translateY(20px); }
-            100% { transform: translateY(0); }
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-10px); }
-            40% { transform: translateX(10px); }
-            60% { transform: translateX(-10px); }
-            80% { transform: translateX(10px); }
-        }
-        
-        .popup-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(255, 215, 0, 0.1),
-                transparent
-            );
-            animation: shine 3s infinite;
-        }
-        
-        .popup-content h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--gold);
-            position: relative;
-        }
-        .popup-content p {
-            margin-bottom: 30px;
-            color: #ccc;
-            position: relative;
-        }
-        .close-popup {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            color: var(--gold);
-            font-size: 24px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .close-popup:hover {
-            color: var(--purple);
-            transform: rotate(90deg);
-        }
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--success), #128C7E);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        }
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a1a, #000);
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, rgba(0,0,0,0) 70%);
+    animation: pulse 8s infinite alternate;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.1; }
+    100% { transform: scale(1.2); opacity: 0.3; }
+  }
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 15px rgba(128, 0, 128, 0.3);
+    line-height: 1.2;
+  }
+  .hero p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+    color: #ddd;
+  }
+  .hero-btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  .btn-secondary {
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    box-shadow: none;
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 215, 0, 0.1);
+  }
+  .btn-secondary::after {
+    display: none;
+  }
 
-        /* Choice Modal */
-        .choice-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .choice-content {
-            background: linear-gradient(135deg, #1a1a1a, #000);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            border: 2px solid var(--gold);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        .choice-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(255, 215, 0, 0.1),
-                transparent
-            );
-            animation: shine 3s infinite;
-        }
-        .choice-options {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .choice-btn {
-            padding: 12px 20px;
-            background: var(--dark);
-            color: white;
-            border: 1px solid var(--gold);
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .choice-btn:hover {
-            background: rgba(255, 215, 0, 0.1);
-            transform: translateY(-3px);
-        }
-        .choice-btn i {
-            font-size: 20px;
-        }
-        .choice-btn.whatsapp {
-            border-color: var(--success);
-            color: var(--success);
-        }
-        .choice-btn.youtube {
-            border-color: #FF0000;
-            color: #FF0000;
-        }
+  /* Stats Section - New */
+  .stats {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+  }
+  .stat-box {
+    padding: 20px;
+  }
+  .stat-box i {
+    font-size: 40px;
+    color: var(--gold);
+    margin-bottom: 15px;
+  }
+  .stat-number {
+    font-size: 40px;
+    font-weight: bold;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+  }
+  .stat-text {
+    color: #ccc;
+    font-size: 18px;
+  }
 
-        /* Floating WhatsApp Button - New */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--success), #128C7E);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
-            transition: all 0.3s ease;
-            animation: pulseFloat 2s infinite;
-        }
-        .whatsapp-float:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.7);
-        }
-        
-        @keyframes pulseFloat {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+  /* Animated Info Boxes */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+  }
+  .info-box {
+    background: rgba(25, 25, 25, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .info-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 215, 0, 0.1),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: shine 3s infinite;
+  }
+  @keyframes shine {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  .info-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.6);
+  }
+  .info-box i {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  .info-box h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--gold);
+  }
+  .info-box p {
+    color: #ccc;
+    flex-grow: 1;
+    margin-bottom: 20px;
+  }
 
-        /* Footer */
-        footer {
-            background: #121212;
-            padding: 50px 0 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
-        }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, var(--gold), var(--purple));
-        }
-        .footer-logo {
-            font-size: 24px;
-            font-weight: bold;
-            background: linear-gradient(to right, var(--gold), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: 0.3s;
-            position: relative;
-        }
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-        .footer-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: 0.3s;
-        }
-        .footer-links a:hover::after {
-            width: 100%;
-        }
-        .copyright {
-            margin-top: 30px;
-            color: #666;
-            font-size: 14px;
-        }
-        .disclaimer {
-            max-width: 800px;
-            margin: 20px auto 0;
-            padding: 15px;
-            background: rgba(255, 0, 0, 0.1);
-            border-left: 3px solid var(--danger);
-            color: #ddd;
-            font-size: 14px;
-            text-align: left;
-        }
+  /* Animated Pricing Cards */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+  }
+  .pricing-card {
+    background: rgba(25, 25, 25, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.5s ease;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .pricing-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(128, 0, 128, 0.3);
+    border-color: rgba(128, 0, 128, 0.6);
+  }
+  .popular-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+    color: var(--dark);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    animation: pulseBadge 2s infinite;
+  }
+  @keyframes pulseBadge {
+    0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+  }
+  .pricing-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--gold);
+  }
+  .price {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 20px 0;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .pricing-card ul {
+    list-style: none;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .pricing-card li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+    color: #ccc;
+  }
+  .pricing-card li:before {
+    content: "✓";
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+  .pricing-card .btn {
+    margin-top: auto;
+  }
 
-        /* New: Responsive Design */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 80px 0;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(10, 10, 10, 0.95);
-                flex-direction: column;
-                padding: 20px 0;
-                gap: 15px;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .mobile-menu-btn {
-                display: block;
-            }
-            .info-grid,
-            .pricing-grid,
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    </style>
+  /* Testimonials Section - New */
+  .testimonials {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 80px 0;
+  }
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+  }
+  .testimonial-card {
+    background: rgba(25, 25, 25, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 80px;
+    color: rgba(255, 215, 0, 0.2);
+    font-family: serif;
+    line-height: 1;
+  }
+  .testimonial-text {
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #ddd;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .author-info h4 {
+    color: var(--gold);
+    margin-bottom: 5px;
+  }
+  .author-info p {
+    color: #aaa;
+    font-size: 14px;
+  }
+
+  /* Contact Section */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  .contact-card {
+    background: rgba(25, 25, 25, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.5s ease;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(128, 0, 128, 0.3);
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+    animation: contact-shine 3s infinite;
+  }
+  @keyframes contact-shine {
+    0% { width: 0; left: 0; }
+    50% { width: 100%; left: 0; }
+    100% { width: 0; left: 100%; }
+  }
+  .contact-card i {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px 0;
+  }
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--gold);
+    font-size: 24px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  .social-links a:hover {
+    color: var(--purple);
+    transform: translateY(-5px);
+    background: rgba(255, 215, 0, 0.1);
+  }
+
+  /* Enrollment Popup */
+  .enrollment-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  .popup-content {
+    background: linear-gradient(135deg, #1a1a1a, #000);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    animation: popupEntry 0.8s ease-out forwards, shake 0.5s 0.8s;
+    transform: translateY(-100vh);
+  }
+  @keyframes popupEntry {
+    0% { transform: translateY(-100vh); }
+    80% { transform: translateY(20px); }
+    100% { transform: translateY(0); }
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+  }
+  .popup-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 215, 0, 0.1),
+      transparent
+    );
+    animation: shine 3s infinite;
+  }
+  .popup-content h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--gold);
+    position: relative;
+  }
+  .popup-content p {
+    margin-bottom: 30px;
+    color: #ccc;
+    position: relative;
+  }
+  .close-popup {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: var(--gold);
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .close-popup:hover {
+    color: var(--purple);
+    transform: rotate(90deg);
+  }
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--success), #128C7E);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  }
+  .whatsapp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+  }
+
+  /* Choice Modal */
+  .choice-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  .choice-content {
+    background: linear-gradient(135deg, #1a1a1a, #000);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+  .choice-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 215, 0, 0.1),
+      transparent
+    );
+    animation: shine 3s infinite;
+  }
+  .choice-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .choice-btn {
+    padding: 12px 20px;
+    background: var(--dark);
+    color: white;
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .choice-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateY(-3px);
+  }
+  .choice-btn i {
+    font-size: 20px;
+  }
+  .choice-btn.whatsapp {
+    border-color: var(--success);
+    color: var(--success);
+  }
+  .choice-btn.youtube {
+    border-color: #FF0000;
+    color: #FF0000;
+  }
+
+  /* Floating WhatsApp Button - New */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--success), #128C7E);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+    transition: all 0.3s ease;
+    animation: pulseFloat 2s infinite;
+  }
+  .whatsapp-float:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.7);
+  }
+  @keyframes pulseFloat {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+
+  /* Footer */
+  footer {
+    background: #121212;
+    padding: 50px 0 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+  }
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+  }
+  .footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+    position: relative;
+  }
+  .footer-links a:hover {
+    color: var(--gold);
+  }
+  .footer-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: 0.3s;
+  }
+  .footer-links a:hover::after {
+    width: 100%;
+  }
+  .copyright {
+    margin-top: 30px;
+    color: #666;
+    font-size: 14px;
+  }
+  .disclaimer {
+    max-width: 800px;
+    margin: 20px auto 0;
+    padding: 15px;
+    background: rgba(255, 0, 0, 0.1);
+    border-left: 3px solid var(--danger);
+    color: #ddd;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 80px 0;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero p {
+      font-size: 1rem;
+    }
+    .hero-btns {
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.95);
+      flex-direction: column;
+      padding: 20px 0;
+      gap: 15px;
+    }
+    .nav-links.active {
+      display: flex;
+    }
+    .mobile-menu-btn {
+      display: block;
+    }
+    .info-grid,
+    .pricing-grid,
+    .testimonial-grid {
+      grid-template-columns: 1fr;
+    }
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
 </head>
 <body>
-    <!-- Trading Dashboard Animation -->
-    <div class="dashboard" id="dashboard"></div>
-    
-    <!-- Falling Money -->
-    <div id="moneyContainer"></div>
-    
-    <!-- Candlesticks -->
-    <div id="candlestickContainer"></div>
-    
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/263789385081" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+<!-- Trading Dashboard Animation -->
+<div class="dashboard" id="dashboard"></div>
 
-    <!-- Navigation -->
-    <nav class="container">
-        <div class="logo">
-            <i class="fas fa-chart-line"></i>
-            Blessed Forexpert
-        </div>
-        <div class="nav-links" id="navLinks">
-            <a href="#">Home</a>
-            <a href="#services">Services</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
+<!-- Falling Money -->
+<div id="moneyContainer"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Master Forex Trading in Zimbabwe</h1>
-            <p>Professional trading analysis, education, and strategy development to help you succeed in the volatile forex markets. Join our community of successful traders today!</p>
-            <div class="hero-btns">
-                <a href="#services" class="btn">Explore Services</a>
-                <a href="#contact" class="btn btn-secondary">Free Consultation</a>
-            </div>
-        </div>
-    </section>
+<!-- Candlesticks -->
+<div id="candlestickContainer"></div>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <i class="fas fa-users"></i>
-                    <div class="stat-number">500+</div>
-                    <div class="stat-text">Active Traders</div>
-                </div>
-                <div class="stat-box">
-                    <i class="fas fa-graduation-cap"></i>
-                    <div class="stat-number">85%</div>
-                    <div class="stat-text">Success Rate</div>
-                </div>
-                <div class="stat-box">
-                    <i class="fas fa-globe-africa"></i>
-                    <div class="stat-number">5+</div>
-                    <div class="stat-text">Years Experience</div>
-                </div>
-                <div class="stat-box">
-                    <i class="fas fa-star"></i>
-                    <div class="stat-number">4.9/5</div>
-                    <div class="stat-text">Client Satisfaction</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/263789385081" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
-    <!-- Info Boxes -->
-    <section class="container">
-        <h2>Start Your Trading Journey</h2>
-        <div class="info-grid">
-            <div class="info-box">
-                <i class="fas fa-chart-line"></i>
-                <h3>See Trade Records 📈</h3>
-                <p>Track real trading performance and verify our strategies with transparent records. Our verified results show consistent profitability over time.</p>
-                <button class="btn" onclick="window.open('https://youtube.com/@blessingfxguru', '_blank')">View Records</button>
-            </div>
-            <div class="info-box">
-                <i class="fas fa-wallet"></i>
-                <h3>Open Your Trading Account 💳</h3>
-                <p>Get step-by-step guidance to set up a Forex account with trusted brokers. We'll help you choose the best platform for your trading style.</p>
-                <button class="btn" onclick="window.open('https://deriv.com', '_blank')">Open Account</button>
-            </div>
-            <div class="info-box">
-                <i class="fas fa-money-bill-wave"></i>
-                <h3>How To Earn 💵</h3>
-                <p>Learn proven methods to maximize your profits and grow your Forex trading skills. Discover strategies that work in the Zimbabwean market.</p>
-                <button class="btn" onclick="showChoiceModal()">Learn Now</button>
-            </div>
-        </div>
-    </section>
+<!-- Navigation -->
+<nav class="container">
+  <div class="logo">
+    <i class="fas fa-chart-line"></i>
+    Blessed Forexpert
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#">Home</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+</nav>
 
-    <!-- Services Section -->
-    <section id="services" class="container">
-        <h2>Our Trading Packages</h2>
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>🎓 Mentorship</h3>
-                <div class="price">$150</div>
-                <p>Personalized coaching and expert guidance to master Forex trading.</p>
-                <ul>
-                    <li>One-on-one sessions</li>
-                    <li>Custom trading plan</li>
-                    <li>Market analysis training</li>
-                    <li>Risk management strategies</li>
-                </ul>
-                <button class="btn enroll-btn" data-package="Mentorship ($150 full course)">Enroll Now</button>
-            </div>
-            <div class="pricing-card">
-                <h3>📘 Basics</h3>
-                <div class="price">$65</div>
-                <p>Beginner-friendly package covering technical analysis and trading essentials.</p>
-                <ul>
-                    <li>Forex fundamentals</li>
-                    <li>Chart reading techniques</li>
-                    <li>Basic strategies</li>
-                    <li>Demo account setup</li>
-                </ul>
-                <button class="btn enroll-btn" data-package="Basics ($65)">Enroll Now</button>
-            </div>
-            <div class="pricing-card">
-                <span class="popular-badge">MOST POPULAR</span>
-                <h3>👑 VIP</h3>
-                <div class="price">$45 <small>/ month</small></div>
-                <p>Monthly subscription for market analysis, signals, and exclusive tips.</p>
-                <ul>
-                    <li>Daily trade signals</li>
-                    <li>Market analysis reports</li>
-                    <li>Priority support</li>
-                    <li>Weekly webinars</li>
-                    <li>Community access</li>
-                </ul>
-                <button class="btn enroll-btn" data-package="VIP ($45/month)">Enroll Now</button>
-            </div>
-            <div class="pricing-card">
-                <h3>⏳ Weekly</h3>
-                <div class="price">$20 <small>/ week</small></div>
-                <p>Affordable weekly insights and strategy updates.</p>
-                <ul>
-                    <li>Weekly market analysis</li>
-                    <li>3-5 trade signals</li>
-                    <li>Email support</li>
-                    <li>Strategy updates</li>
-                </ul>
-                <button class="btn enroll-btn" data-package="Weekly ($20/week)">Enroll Now</button>
-            </div>
-            <div class="pricing-card">
-                <h3>💰 Lifetime</h3>
-                <div class="price">$1,000</div>
-                <p>Lifetime access to all courses, mentorship, signals, and exclusive content.</p>
-                <ul>
-                    <li>All current courses</li>
-                    <li>Future content updates</li>
-                    <li>VIP signals forever</li>
-                    <li>Personal mentorship</li>
-                    <li>Premium community</li>
-                </ul>
-                <button class="btn enroll-btn" data-package="Lifetime ($1000)">Enroll Now</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2>Success Stories</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Blessed Forexpert completely transformed my trading approach. I went from losing money to consistent profits in just 3 months!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">TM</div>
-                        <div class="author-info">
-                            <h4>Tendai M.</h4>
-                            <p>Harare, Zimbabwe</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The VIP package is worth every dollar. The daily signals and analysis have helped me navigate the volatile Zim market successfully."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SM</div>
-                        <div class="author-info">
-                            <h4>Sarah K.</h4>
-                            <p>Bulawayo, Zimbabwe</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"As a beginner, the Basics course gave me the confidence to start trading. The mentorship program took me to the next level."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JM</div>
-                        <div class="author-info">
-                            <h4>James D.</h4>
-                            <p>Mutare, Zimbabwe</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="container">
-        <h2>Contact Us</h2>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <i class="fab fa-whatsapp"></i>
-                <h3>WhatsApp</h3>
-                <p>+263 78 938 5081</p>
-                <a href="https://wa.me/263789385081" class="btn">Chat Now</a>
-            </div>
-            <div class="contact-card">
-                <i class="fas fa-envelope"></i>
-                <h3>Email</h3>
-                <p>Bdpvtltd1@gmail.com</p>
-                <a href="mailto:Bdpvtltd1@gmail.com" class="btn">Send Email</a>
-            </div>
-        </div>
-        <div class="social-links">
-            <a href="https://www.facebook.com/share/16kgW17azL/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/blessing_forex_xperts/profilecard/?igsh=MWtid2m5dXhkZW8zdg==" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@blessingfxguru?si=jrrsc4mTZpiOwGQx" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-        </div>
-    </section>
-
-    <!-- Enrollment Popup -->
-    <div class="enrollment-popup" id="enrollmentPopup">
-        <div class="popup-content">
-            <span class="close-popup" onclick="closePopup()">&times;</span>
-            <h3>Ready to Enroll!</h3>
-            <p>You're about to enroll in: <strong id="selectedPackage"></strong></p>
-            <p>Continue to WhatsApp to complete your enrollment and discuss payment options.</p>
-            <a id="whatsappLink" class="whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i> Continue on WhatsApp
-            </a>
-        </div>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1>Master Forex Trading in Zimbabwe</h1>
+    <p>Professional trading analysis, education, and strategy development to help you succeed in the volatile forex markets. Join our community of successful traders today!</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn">Explore Services</a>
+      <a href="#contact" class="btn btn-secondary">Free Consultation</a>
     </div>
+  </div>
+</section>
 
-    <!-- Choice Modal -->
-    <div class="choice-modal" id="choiceModal">
-        <div class="choice-content">
-            <h3>How would you like to learn?</h3>
-            <p>Choose your preferred learning method:</p>
-            <div class="choice-options">
-                <button class="choice-btn whatsapp" onclick="redirectToWhatsApp()">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </button>
-                <button class="choice-btn youtube" onclick="redirectToYouTube()">
-                    <i class="fab fa-youtube"></i> YouTube
-                </button>
-            </div>
-            <button style="margin-top:20px; background:transparent; color:var(--gold); border:1px solid var(--gold)" onclick="closeChoiceModal()">Cancel</button>
-        </div>
+<!-- Stats Section -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-box">
+        <i class="fas fa-users"></i>
+        <div class="stat-number">500+</div>
+        <div class="stat-text">Active Traders</div>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-graduation-cap"></i>
+        <div class="stat-number">85%</div>
+        <div class="stat-text">Success Rate</div>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-globe-africa"></i>
+        <div class="stat-number">5+</div>
+        <div class="stat-text">Years Experience</div>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-star"></i>
+        <div class="stat-number">4.9/5</div>
+        <div class="stat-text">Client Satisfaction</div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-logo">Blessed Forexpert</div>
-            <p class="text-center">Master forex trading with proven strategies and expert guidance tailored for Zimbabwean traders.</p>
-            
-            <div class="footer-links">
-                <a href="#">Home</a>
-                <a href="#services">Services</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#contact">Contact</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-            
-            <div class="disclaimer">
-                <p><strong>Risk Disclosure:</strong> Forex trading involves substantial risk of loss and is not suitable for every investor. Past performance is not indicative of future results. The high degree of leverage can work against you as well as for you.</p>
-            </div>
-            
-            <p class="copyright">© 2025 Blessed Forexpert. All rights reserved. BD Private Limited.</p>
+<!-- Info Boxes -->
+<section class="container">
+  <h2>Start Your Trading Journey</h2>
+  <div class="info-grid">
+    <div class="info-box">
+      <i class="fas fa-chart-line"></i>
+      <h3>See Trade Records 📈</h3>
+      <p>Track real trading performance and verify our strategies with transparent records. Our verified results show consistent profitability over time.</p>
+      <button class="btn" onclick="window.open('https://youtube.com/@blessingfxguru', '_blank')">View Records</button>
+    </div>
+    <div class="info-box">
+      <i class="fas fa-wallet"></i>
+      <h3>Open Your Trading Account 💳</h3>
+      <p>Get step-by-step guidance to set up a Forex account with trusted brokers. We'll help you choose the best platform for your trading style.</p>
+      <!-- Updated button link -->
+      <button class="btn" onclick="window.location.href='https://track.deriv.com/_FkLIUymA9QBMjdsyM5hasGNd7ZgqdRLk/1/'">Open Account</button>
+    </div>
+    <div class="info-box">
+      <i class="fas fa-money-bill-wave"></i>
+      <h3>How To Earn 💵</h3>
+      <p>Learn proven methods to maximize your profits and grow your Forex trading skills. Discover strategies that work in the Zimbabwean market.</p>
+      <button class="btn" onclick="showChoiceModal()">Learn Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="container">
+  <h2>Our Trading Packages</h2>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <h3>🎓 Mentorship</h3>
+      <div class="price">$150</div>
+      <p>Personalized coaching and expert guidance to master Forex trading.</p>
+      <ul>
+        <li>One-on-one sessions</li>
+        <li>Custom trading plan</li>
+        <li>Market analysis training</li>
+        <li>Risk management strategies</li>
+      </ul>
+      <button class="btn enroll-btn" data-package="Mentorship ($150 full course)">Enroll Now</button>
+    </div>
+    <div class="pricing-card">
+      <h3>📘 Basics</h3>
+      <div class="price">$65</div>
+      <p>Beginner-friendly package covering technical analysis and trading essentials.</p>
+      <ul>
+        <li>Forex fundamentals</li>
+        <li>Chart reading techniques</li>
+        <li>Basic strategies</li>
+        <li>Demo account setup</li>
+      </ul>
+      <button class="btn enroll-btn" data-package="Basics ($65)">Enroll Now</button>
+    </div>
+    <div class="pricing-card">
+      <span class="popular-badge">MOST POPULAR</span>
+      <h3>👑 VIP</h3>
+      <div class="price">$45 <small>/ month</small></div>
+      <p>Monthly subscription for market analysis, signals, and exclusive tips.</p>
+      <ul>
+        <li>Daily trade signals</li>
+        <li>Market analysis reports</li>
+        <li>Priority support</li>
+        <li>Weekly webinars</li>
+        <li>Community access</li>
+      </ul>
+      <button class="btn enroll-btn" data-package="VIP ($45/month)">Enroll Now</button>
+    </div>
+    <div class="pricing-card">
+      <h3>⏳ Weekly</h3>
+      <div class="price">$20 <small>/ week</small></div>
+      <p>Affordable weekly insights and strategy updates.</p>
+      <ul>
+        <li>Weekly market analysis</li>
+        <li>3-5 trade signals</li>
+        <li>Email support</li>
+        <li>Strategy updates</li>
+      </ul>
+      <button class="btn enroll-btn" data-package="Weekly ($20/week)">Enroll Now</button>
+    </div>
+    <div class="pricing-card">
+      <h3>💰 Lifetime</h3>
+      <div class="price">$1,000</div>
+      <p>Lifetime access to all courses, mentorship, signals, and exclusive content.</p>
+      <ul>
+        <li>All current courses</li>
+        <li>Future content updates</li>
+        <li>VIP signals forever</li>
+        <li>Personal mentorship</li>
+        <li>Premium community</li>
+      </ul>
+      <button class="btn enroll-btn" data-package="Lifetime ($1000)">Enroll Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    <h2>Success Stories</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Blessed Forexpert completely transformed my trading approach. I went from losing money to consistent profits in just 3 months!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">TM</div>
+          <div class="author-info">
+            <h4>Tendai M.</h4>
+            <p>Harare, Zimbabwe</p>
+          </div>
         </div>
-    </footer>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The VIP package is worth every dollar. The daily signals and analysis have helped me navigate the volatile Zim market successfully."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SM</div>
+          <div class="author-info">
+            <h4>Sarah K.</h4>
+            <p>Bulawayo, Zimbabwe</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"As a beginner, the Basics course gave me the confidence to start trading. The mentorship program took me to the next level."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JM</div>
+          <div class="author-info">
+            <h4>James D.</h4>
+            <p>Mutare, Zimbabwe</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Create falling money
-        function createMoney() {
-            const moneyContainer = document.getElementById('moneyContainer');
-            const moneyIcons = ['💰', '💵', '💲', '💶', '💷', '💴', '💸'];
-            
-            for (let i = 0; i < 40; i++) {
-                const money = document.createElement('div');
-                money.className = 'money';
-                money.textContent = moneyIcons[Math.floor(Math.random() * moneyIcons.length)];
-                money.style.left = `${Math.random() * 100}vw`;
-                money.style.animationDuration = `${5 + Math.random() * 15}s`;
-                money.style.animationDelay = `${Math.random() * 5}s`;
-                money.style.fontSize = `${15 + Math.random() * 25}px`;
-                moneyContainer.appendChild(money);
-            }
-        }
-        
-        // Create candlesticks
-        function createCandlesticks() {
-            const container = document.getElementById('candlestickContainer');
-            
-            for (let i = 0; i < 7; i++) {
-                const candlestick = document.createElement('div');
-                candlestick.className = 'candlestick';
-                candlestick.style.left = `${5 + i * 15}%`;
-                candlestick.style.animationDelay = `${i * 0.7}s`;
-                container.appendChild(candlestick);
-            }
-        }
-        
-        // Create trading dashboard lines
-        function createDashboard() {
-            const dashboard = document.getElementById('dashboard');
-            const lineCount = 15;
-            
-            for (let i = 0; i < lineCount; i++) {
-                const line = document.createElement('div');
-                line.className = 'chart-line';
-                line.style.top = `${(i / lineCount) * 100}%`;
-                line.style.width = `${10 + Math.random() * 90}%`;
-                line.style.animationDuration = `${10 + Math.random() * 20}s`;
-                line.style.animationDelay = `${Math.random() * 5}s`;
-                dashboard.appendChild(line);
-            }
-        }
-        
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', function() {
-            createMoney();
-            createCandlesticks();
-            createDashboard();
-            
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            
-            mobileMenuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-            
-            // Enhanced card animations
-            const cards = document.querySelectorAll('.info-box, .pricing-card, .contact-card, .testimonial-card');
-            
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
-                
-                card.addEventListener('mousemove', (e) => {
-                    const x = e.offsetX;
-                    const y = e.offsetY;
-                    const centerX = card.offsetWidth / 2;
-                    const centerY = card.offsetHeight / 2;
-                    
-                    const angleX = (y - centerY) / 20;
-                    const angleY = (centerX - x) / 20;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = '';
-                });
-            });
-        });
+<!-- Contact Section -->
+<section id="contact" class="container">
+<h2>Contact Us</h2>
+<div class="contact-grid">
+<div class="contact-card">
+<i class="fab fa-whatsapp"></i>
+<h3>WhatsApp</h3>
+<p>+263 78 938 5081</p>
+<a href="https://wa.me/263789385081" class="btn">Chat Now</a>
+</div>
+<div class="contact-card">
+<i class="fas fa-envelope"></i>
+<h3>Email</h3>
+<p>Bdpvtltd1@gmail.com</p>
+<a href="mailto:Bdpvtltd1@gmail.com" class="btn">Send Email</a>
+</div>
+</div>
+<div class="social-links">
+<a href="https://www.facebook.com/share/16kgW17azL/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+<a href="https://www.instagram.com/blessing_forex_xperts/profilecard/?igsh=MWtid2m5dXhkZW8zdg==" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://youtube.com/@blessingfxguru?si=jrrsc4mTZpiOwGQx" target="_blank"><i class="fab fa-youtube"></i></a>
+<a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+<a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+</div>
+</section>
 
-        // Enrollment functionality
-        const enrollButtons = document.querySelectorAll('.enroll-btn');
-        const enrollmentPopup = document.getElementById('enrollmentPopup');
-        const selectedPackageElement = document.getElementById('selectedPackage');
-        const whatsappLink = document.getElementById('whatsappLink');
+<!-- Enrollment Popup -->
+<div class="enrollment-popup" id="enrollmentPopup">
+<div class="popup-content">
+<span class="close-popup" onclick="closePopup()">&times;</span>
+<h3>Ready to Enroll!</h3>
+<p>You're about to enroll in: <strong id="selectedPackage"></strong></p>
+<p>Continue to WhatsApp to complete your enrollment and discuss payment options.</p>
+<a id="whatsappLink" class="whatsapp-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> Continue on WhatsApp
+</a>
+</div>
+</div>
 
-        enrollButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const packageName = this.getAttribute('data-package');
-                selectedPackageElement.textContent = packageName;
-                
-                // Create WhatsApp message
-                const message = `Hello Blessed Forexpert! I want to enroll in your ${packageName} program. Please provide more details.`;
-                const encodedMessage = encodeURIComponent(message);
-                whatsappLink.href = `https://wa.me/263789385081?text=${encodedMessage}`;
-                
-                // Show popup
-                enrollmentPopup.style.display = 'flex';
-            });
-        });
+<!-- Choice Modal -->
+<div class="choice-modal" id="choiceModal">
+<div class="choice-content">
+<h3>How would you like to learn?</h3>
+<p>Choose your preferred learning method:</p>
+<div class="choice-options">
+<button class="choice-btn whatsapp" onclick="redirectToWhatsApp()">
+<i class="fab fa-whatsapp"></i> WhatsApp
+</button>
+<button class="choice-btn youtube" onclick="redirectToYouTube()">
+<i class="fab fa-youtube"></i> YouTube
+</button>
+</div>
+<button style="margin-top:20px; background:transparent; color:var(--gold); border:1px solid var(--gold)" onclick="closeChoiceModal()">Cancel</button>
+</div>
+</div>
 
-        function closePopup() {
-            enrollmentPopup.style.display = 'none';
-        }
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/263789385081" class="whatsapp-float" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
 
-        // Choice Modal Functions
-        function showChoiceModal() {
-            document.getElementById('choiceModal').style.display = 'flex';
-        }
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="footer-logo">Blessed Forexpert</div>
+<p class="text-center">Master forex trading with proven strategies and expert guidance tailored for Zimbabwean traders.</p>
 
-        function closeChoiceModal() {
-            document.getElementById('choiceModal').style.display = 'none';
-        }
+<div class="footer-links">
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#testimonials">Testimonials</a>
+<a href="#contact">Contact</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
 
-        function redirectToWhatsApp() {
-            const message = "Hello Blessed Forexpert! I want to learn how to earn through Forex trading. Please guide me.";
-            window.open(`https://wa.me/263789385081?text=${encodeURIComponent(message)}`, '_blank');
-            closeChoiceModal();
-        }
+<div class="disclaimer">
+<p><strong>Risk Disclosure:</strong> Forex trading involves substantial risk of loss and is not suitable for every investor. Past performance is not indicative of future results. The high degree of leverage can work against you as well as for you.</p>
+</div>
 
-        function redirectToYouTube() {
-            window.open('https://youtube.com/@blessingfxguru', '_blank');
-            closeChoiceModal();
-        }
+<p class="copyright">© 2025 Blessed Forexpert. All rights reserved. BD Private Limited.</p>
+</div>
+</footer>
 
-        // Close modals when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === enrollmentPopup) {
-                closePopup();
-            }
-            if (event.target === document.getElementById('choiceModal')) {
-                closeChoiceModal();
-            }
-        });
+<script>
+  // Create falling money
+  function createMoney() {
+    const moneyContainer = document.getElementById('moneyContainer');
+    const moneyIcons = ['💰', '💵', '💲', '💶', '💷', '💴', '💸'];
+    for (let i = 0; i < 40; i++) {
+      const money = document.createElement('div');
+      money.className = 'money';
+      money.textContent = moneyIcons[Math.floor(Math.random() * moneyIcons.length)];
+      money.style.left = `${Math.random() * 100}vw`;
+      money.style.animationDuration = `${5 + Math.random() * 15}s`;
+      money.style.animationDelay = `${Math.random() * 5}s`;
+      money.style.fontSize = `${15 + Math.random() * 25}px`;
+      moneyContainer.appendChild(money);
+    }
+  }
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                // Close mobile menu if open
-                navLinks.classList.remove('active');
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+  // Create candlesticks
+  function createCandlesticks() {
+    const container = document.getElementById('candlestickContainer');
+    for (let i = 0; i < 7; i++) {
+      const candlestick = document.createElement('div');
+      candlestick.className = 'candlestick';
+      candlestick.style.left = `${5 + i * 15}%`;
+      candlestick.style.animationDelay = `${i * 0.7}s`;
+      container.appendChild(candlestick);
+    }
+  }
+
+  // Create trading dashboard lines
+  function createDashboard() {
+    const dashboard = document.getElementById('dashboard');
+    const lineCount = 15;
+    for (let i = 0; i < lineCount; i++) {
+      const line = document.createElement('div');
+      line.className = 'chart-line';
+      line.style.top = `${(i / lineCount) * 100}%`;
+      line.style.width = `${10 + Math.random() * 90}%`;
+      line.style.animationDuration = `${10 + Math.random() * 20}s`;
+      line.style.animationDelay = `${Math.random() * 5}s`;
+      dashboard.appendChild(line);
+    }
+  }
+
+  // Initialize animations
+  document.addEventListener('DOMContentLoaded', function() {
+    createMoney();
+    createCandlesticks();
+    createDashboard();
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Enhanced card animations
+    const cards = document.querySelectorAll('.info-box, .pricing-card, .contact-card, .testimonial-card');
+    cards.forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.1}s`;
+      card.addEventListener('mousemove', (e) => {
+        const x = e.offsetX;
+        const y = e.offsetY;
+        const centerX = card.offsetWidth / 2;
+        const centerY = card.offsetHeight / 2;
+        const angleX = (y - centerY) / 20;
+        const angleY = (centerX - x) / 20;
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  });
+
+  // Enrollment functionality
+  const enrollButtons = document.querySelectorAll('.enroll-btn');
+  const enrollmentPopup = document.getElementById('enrollmentPopup');
+  const selectedPackageElement = document.getElementById('selectedPackage');
+  const whatsappLink = document.getElementById('whatsappLink');
+
+  enrollButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const packageName = this.getAttribute('data-package');
+      selectedPackageElement.textContent = packageName;
+      const message = `Hello Blessed Forexpert! I want to enroll in your ${packageName} program. Please provide more details.`;
+      const encodedMessage = encodeURIComponent(message);
+      whatsappLink.href = `https://wa.me/263789385081?text=${encodedMessage}`;
+      enrollmentPopup.style.display = 'flex';
+    });
+  });
+  function closePopup() {
+    enrollmentPopup.style.display = 'none';
+  }
+
+  // Choice Modal Functions
+  function showChoiceModal() {
+    document.getElementById('choiceModal').style.display = 'flex';
+  }
+  function closeChoiceModal() {
+    document.getElementById('choiceModal').style.display = 'none';
+  }
+  function redirectToWhatsApp() {
+    const message = "Hello Blessed Forexpert! I want to learn how to earn through Forex trading. Please guide me.";
+    window.open(`https://wa.me/263789385081?text=${encodeURIComponent(message)}`, '_blank');
+    closeChoiceModal();
+  }
+  function redirectToYouTube() {
+    window.open('https://youtube.com/@blessingfxguru', '_blank');
+    closeChoiceModal();
+  }
+
+  // Close modals when clicking outside
+  window.addEventListener('click', function(event) {
+    if (event.target === enrollmentPopup) {
+      closePopup();
+    }
+    if (event.target === document.getElementById('choiceModal')) {
+      closeChoiceModal();
+    }
+  });
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Close mobile menu if open
+      document.getElementById('navLinks').classList.remove('active');
+      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
+```
+
+**Summary of change**:
+- I replaced the `onclick` attribute of the "Open Your Trading Account 💳" button to navigate to your specified link directly.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blessed Forexpert - Professional Forex Trading in Zimbabwe</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  /* Global Styles */
+  :root {
+    --gold: #FFD700;
+    --dark-gold: #CFB53B;
+    --purple: #800080;
+    --dark-purple: #4B0082;
+    --dark: #121212;
+    --light: #f8f9fa;
+    --success: #25D366;
+    --danger: #FF3860;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Arial', sans-serif;
+  }
+  body {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  /* Make all cards lime green and add shake animation on click */
+  .info-box, .pricing-card {
+    border: 2px solid limegreen;
+    box-shadow: 0 0 15px limegreen;
+    transition: all 0.3s ease;
+  }
+
+  /* Shake animation for click effect */
+  @keyframes shake {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-5px, 0); }
+    40% { transform: translate(5px, 0); }
+    60% { transform: translate(-5px, 0); }
+    80% { transform: translate(5px, 0); }
+    100% { transform: translate(0, 0); }
+  }
+
+  /* Existing styles (trimmed for brevity, include all your styles here) */
+  /* ... your existing CSS ... */
+
+  /* For demonstration, here's just the relevant parts for the animated shake, rest are unchanged */
+</style>
+</head>
+<body>
+
+<!-- Your existing content... -->
+
+<!-- The rest of your page content remains unchanged -->
+
+<!-- Your existing scripts and content -->
+
+<script>
+  // Add click event to all cards to shake
+  document.querySelectorAll('.info-box, .pricing-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.style.animation = 'shake 0.5s';
+      card.addEventListener('animationend', () => {
+        card.style.animation = '';
+      }, { once: true });
+    });
+  });
+</script>
+
 </body>
 </html>
