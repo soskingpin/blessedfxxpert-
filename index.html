@@ -125,6 +125,8 @@
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    position: relative;
+    overflow: hidden;
   }
   .btn:hover {
     transform: translateY(-3px);
@@ -727,6 +729,42 @@
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
   }
 
+  /* Account Creation Section */
+  .account-section {
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #0c1b33);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .account-container {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .account-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 15px rgba(128, 0, 128, 0.3);
+  }
+  .account-section p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    color: #ddd;
+  }
+  .founder-credit {
+    margin-top: 30px;
+    font-style: italic;
+    color: rgba(255,255,255,0.8);
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
   /* Footer */
   footer {
     background: #121212;
@@ -837,6 +875,9 @@
     }
     .stats-grid {
       grid-template-columns: 1fr 1fr;
+    }
+    .account-section h2 {
+      font-size: 2rem;
     }
   }
 </style>
@@ -963,6 +1004,71 @@
           </div>
         </div>
       </div>
+      <!-- New testimonials -->
+      <div class="testimonial-card">
+        <p class="testimonial-text">"As a busy mom in Chitungwiza, I never thought I could trade. Blessed Forexpert made it simple and profitable!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">LM</div>
+          <div class="author-info">
+            <h4>Lorraine M.</h4>
+            <p>Chitungwiza, Zimbabwe</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The Waterfalls community traders group recommended Blessed Forexpert. Best decision I've made!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">TK</div>
+          <div class="author-info">
+            <h4>Takunda K.</h4>
+            <p>Waterfalls, Zimbabwe</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Living in Borrowdale, I needed a reliable trading mentor. Blessed Forexpert delivered beyond expectations."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DB</div>
+          <div class="author-info">
+            <h4>David B.</h4>
+            <p>Borrowdale, Zimbabwe</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"From Hwange to forex profits! Blessed Forexpert's strategies work anywhere in Zimbabwe."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SN</div>
+          <div class="author-info">
+            <h4>Samuel N.</h4>
+            <p>Hwange, Zimbabwe</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Mount Pleasant resident here. Blessed Forexpert's signals have consistently helped me grow my portfolio."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RC</div>
+          <div class="author-info">
+            <h4>Rumbidzai C.</h4>
+            <p>Mount Pleasant, Zimbabwe</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- New Account Creation Section -->
+<section class="account-section">
+  <div class="container">
+    <div class="account-container">
+      <h2>Create Your Trading Account</h2>
+      <p>Join thousands of successful traders who have transformed their trading journey with Blessed Forexpert</p>
+      <a href="https://track.deriv.com/_FkLIUymA9QBMjdsyM5hasGNd7ZgqdRLk/1/" class="btn" style="font-size: 1.2rem; padding: 15px 40px;">
+        <i class="fas fa-user-plus"></i> Create Account Now
+      </a>
+      <p class="founder-credit">Founder isBlessed fx xperts</p>
     </div>
   </div>
 </section>
