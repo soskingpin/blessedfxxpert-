@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blessed Forexpert | Professional Forex Mentorship in Zimbabwe</title>
   <meta name="description" content="Expert forex trading education and mentorship for Zimbabwean traders. Data-driven strategies, proven results, and professional guidance.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css " />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -495,214 +495,480 @@
       h2 { font-size: 2.2rem; }
       .stat-number { font-size: 2.5rem; }
     }
+    
+    /* ===== INTRO ANIMATION ===== */
+    .intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      overflow: hidden;
+    }
+    
+    #candlestickCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .brand-reveal {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .brand-name {
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: -0.05em;
+      color: transparent;
+      background: linear-gradient(90deg, #FFD700, #FFF2A8, #FFD700);
+      -webkit-background-clip: text;
+      background-clip: text;
+      background-size: 200% auto;
+      animation: shine 3s linear infinite;
+    }
+    
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+    
+    .loading-bar {
+      width: 80%;
+      max-width: 400px;
+      height: 3px;
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .loading-progress {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #FFD700, #FFE040);
+      transition: width 3.5s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    
+    .fade-out {
+      animation: fadeOut 0.8s ease-out forwards;
+    }
+    
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+    }
   </style>
 </head>
 <body>
-
-<nav>
-  <div class="container nav-container">
-    <div class="logo">
-      <i class="fas fa-chart-network"></i> <span>Blessed Forexpert</span>
-    </div>
-    <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#testimonials">Success Stories</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <button class="mobile-menu-btn" id="mobileMenuBtn">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-</nav>
-
-<section class="hero" id="home">
-  <div class="container">
-    <h1>Professional Forex Mentorship for Zimbabwean Traders</h1>
-    <p>Learn data-driven strategies, risk management, and technical analysis from an experienced mentor. Join traders across Harare, Bulawayo, and beyond who are building sustainable trading careers.</p>
-    <div class="hero-btns">
-      <a href="#testimonials" class="btn">See Success Stories</a>
-      <a href="#contact" class="btn btn-secondary">Free Consultation</a>
-    </div>
-  </div>
-</section>
-
-<section class="stats">
-  <div class="container">
-    <h2>Our Impact</h2>
-    <div class="stats-grid">
-      <div class="stat-box">
-        <i class="fas fa-users"></i>
-        <div class="stat-number">500+</div>
-        <div class="stat-text">Traders Mentored</div>
-      </div>
-      <div class="stat-box">
-        <i class="fas fa-chart-line"></i>
-        <div class="stat-number">85%</div>
-        <div class="stat-text">Consistency Rate</div>
-      </div>
-      <div class="stat-box">
-        <i class="fas fa-calendar"></i>
-        <div class="stat-number">5+</div>
-        <div class="stat-text">Years of Experience</div>
-      </div>
-      <div class="stat-box">
-        <i class="fas fa-star"></i>
-        <div class="stat-number">4.9</div>
-        <div class="stat-text">Client Rating</div>
+  <!-- BLESSED FXPERT INTRO -->
+  <div class="intro-overlay" id="introOverlay">
+    <canvas id="candlestickCanvas"></canvas>
+    <div class="brand-reveal">
+      <div class="brand-name">BLESSED FXPERT</div>
+      <div class="loading-bar">
+        <div class="loading-progress" id="loadingProgress"></div>
       </div>
     </div>
   </div>
-</section>
 
-<section class="container">
-  <h2>Begin Your Trading Journey</h2>
-  <div class="info-grid">
-    <div class="info-box">
-      <i class="fas fa-graduation-cap"></i>
-      <h3>Structured Mentorship</h3>
-      <p>From fundamentals to advanced strategies, our step-by-step program builds your skills progressively with real-market applications.</p>
-      <a href="https://youtube.com/@blessingfxguru" target="_blank" class="btn">Watch Free Lessons</a>
+  <!-- Your existing website content starts here -->
+  <nav>
+    <div class="container nav-container">
+      <div class="logo">
+        <i class="fas fa-chart-network"></i> <span>Blessed Forexpert</span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#testimonials">Success Stories</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
-    <div class="info-box">
-      <i class="fas fa-wallet"></i>
-      <h3>Broker Guidance</h3>
-      <p>Learn how to safely open accounts with regulated brokers and manage your capital with professional risk protocols.</p>
-      <a href="https://track.deriv.com/_FkLIUymA9QBMjdsyM5hasGNd7ZgqdRLk/1/" class="btn">Get Setup Guide</a>
-    </div>
-    <div class="info-box">
-      <i class="fas fa-brain"></i>
-      <h3>Strategy Development</h3>
-      <p>Discover how to create personalized trading plans based on market conditions, not hype or signals.</p>
-      <a href="#" class="btn" onclick="showChoiceModal()">Learn More</a>
-    </div>
-  </div>
-</section>
+  </nav>
 
-<section class="testimonials" id="testimonials">
-  <div class="container">
-    <h2>Traders' Success Stories</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <p class="testimonial-text">"The structured mentorship transformed my approach. I now trade with discipline and consistency."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">TM</div>
-          <div class="author-info">
-            <h4>Tendai M.</h4>
-            <p>Harare</p>
-          </div>
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Professional Forex Mentorship for Zimbabwean Traders</h1>
+      <p>Learn data-driven strategies, risk management, and technical analysis from an experienced mentor. Join traders across Harare, Bulawayo, and beyond who are building sustainable trading careers.</p>
+      <div class="hero-btns">
+        <a href="#testimonials" class="btn">See Success Stories</a>
+        <a href="#contact" class="btn btn-secondary">Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container">
+      <h2>Our Impact</h2>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <i class="fas fa-users"></i>
+          <div class="stat-number">500+</div>
+          <div class="stat-text">Traders Mentored</div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <p class="testimonial-text">"Finally found a mentor who teaches real skills, not just signals. My confidence has grown immensely."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">SK</div>
-          <div class="author-info">
-            <h4>Sarah K.</h4>
-            <p>Bulawayo</p>
-          </div>
+        <div class="stat-box">
+          <i class="fas fa-chart-line"></i>
+          <div class="stat-number">85%</div>
+          <div class="stat-text">Consistency Rate</div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <p class="testimonial-text">"The focus on risk management changed everything. I'm now consistently profitable."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">JD</div>
-          <div class="author-info">
-            <h4>James D.</h4>
-            <p>Mutare</p>
-          </div>
+        <div class="stat-box">
+          <i class="fas fa-calendar"></i>
+          <div class="stat-number">5+</div>
+          <div class="stat-text">Years of Experience</div>
+        </div>
+        <div class="stat-box">
+          <i class="fas fa-star"></i>
+          <div class="stat-number">4.9</div>
+          <div class="stat-text">Client Rating</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="container" id="contact">
-  <h2>Contact Us</h2>
-  <div class="contact-grid">
-    <div class="contact-card">
-      <i class="fab fa-whatsapp"></i>
-      <h3>WhatsApp</h3>
-      <p>+263 78 938 5081</p>
-      <a href="https://wa.me/263789385081" class="btn">Message Now</a>
+  <section class="container">
+    <h2>Begin Your Trading Journey</h2>
+    <div class="info-grid">
+      <div class="info-box">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Structured Mentorship</h3>
+        <p>From fundamentals to advanced strategies, our step-by-step program builds your skills progressively with real-market applications.</p>
+        <a href=" https://youtube.com/@blessingfxguru " target="_blank" class="btn">Watch Free Lessons</a>
+      </div>
+      <div class="info-box">
+        <i class="fas fa-wallet"></i>
+        <h3>Broker Guidance</h3>
+        <p>Learn how to safely open accounts with regulated brokers and manage your capital with professional risk protocols.</p>
+        <a href="https://track.deriv.com/_FkLIUymA9QBMjdsyM5hasGNd7ZgqdRLk/1/ " class="btn">Get Setup Guide</a>
+      </div>
+      <div class="info-box">
+        <i class="fas fa-brain"></i>
+        <h3>Strategy Development</h3>
+        <p>Discover how to create personalized trading plans based on market conditions, not hype or signals.</p>
+        <a href="#" class="btn" onclick="showChoiceModal()">Learn More</a>
+      </div>
     </div>
-    <div class="contact-card">
-      <i class="fas fa-envelope"></i>
-      <h3>Email</h3>
-      <p>Bdpvtltd1@gmail.com</p>
-      <a href="mailto:Bdpvtltd1@gmail.com" class="btn">Send Email</a>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <h2>Traders' Success Stories</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"The structured mentorship transformed my approach. I now trade with discipline and consistency."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">TM</div>
+            <div class="author-info">
+              <h4>Tendai M.</h4>
+              <p>Harare</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Finally found a mentor who teaches real skills, not just signals. My confidence has grown immensely."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SK</div>
+            <div class="author-info">
+              <h4>Sarah K.</h4>
+              <p>Bulawayo</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"The focus on risk management changed everything. I'm now consistently profitable."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">JD</div>
+            <div class="author-info">
+              <h4>James D.</h4>
+              <p>Mutare</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <i class="fab fa-whatsapp"></i>
+        <h3>WhatsApp</h3>
+        <p>+263 78 938 5081</p>
+        <a href="https://wa.me/263789385081 " class="btn">Message Now</a>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <h3>Email</h3>
+        <p>Bdpvtltd1@gmail.com</p>
+        <a href="mailto:Bdpvtltd1@gmail.com" class="btn">Send Email</a>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="https://facebook.com/share/16kgW17azL/ " target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://instagram.com/blessing_forex_xperts " target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@blessingfxguru " target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+  </section>
+
+  <!-- Modals -->
+  <div class="choice-modal" id="choiceModal">
+    <div class="choice-content">
+      <span class="close-popup" onclick="closeChoiceModal()">&times;</span>
+      <h3>How Would You Like to Learn?</h3>
+      <p>Choose your preferred method:</p>
+      <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+        <a href="https://wa.me/263789385081?text=Hi%20Blessed%20Forexpert,%20I'd%20like%20to%20learn%20via%20WhatsApp%20mentorship." class="btn" target="_blank">WhatsApp</a>
+        <a href=" https://youtube.com/@blessingfxguru " class="btn btn-secondary" target="_blank">YouTube</a>
+      </div>
     </div>
   </div>
-  <div class="social-links">
-    <a href="https://facebook.com/share/16kgW17azL/" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://instagram.com/blessing_forex_xperts" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@blessingfxguru" target="_blank"><i class="fab fa-youtube"></i></a>
-  </div>
-</section>
 
-<!-- Modals -->
-<div class="choice-modal" id="choiceModal">
-  <div class="choice-content">
-    <span class="close-popup" onclick="closeChoiceModal()">&times;</span>
-    <h3>How Would You Like to Learn?</h3>
-    <p>Choose your preferred method:</p>
-    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
-      <a href="https://wa.me/263789385081?text=Hi%20Blessed%20Forexpert,%20I'd%20like%20to%20learn%20via%20WhatsApp%20mentorship." class="btn" target="_blank">WhatsApp</a>
-      <a href="https://youtube.com/@blessingfxguru" class="btn btn-secondary" target="_blank">YouTube</a>
+  <footer>
+    <div class="container">
+      <div class="footer-logo">Blessed Forexpert</div>
+      <p>Professional forex mentorship for Zimbabwean traders. Focus on education, not hype.</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#testimonials">Success Stories</a>
+        <a href="#contact">Contact</a>
+        <a href="#">Privacy</a>
+      </div>
+      <p class="copyright">© 2025 Blessed Forexpert. All rights reserved.</p>
     </div>
-  </div>
-</div>
+  </footer>
 
-<footer>
-  <div class="container">
-    <div class="footer-logo">Blessed Forexpert</div>
-    <p>Professional forex mentorship for Zimbabwean traders. Focus on education, not hype.</p>
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#testimonials">Success Stories</a>
-      <a href="#contact">Contact</a>
-      <a href="#">Privacy</a>
-    </div>
-    <p class="copyright">© 2025 Blessed Forexpert. All rights reserved.</p>
-  </div>
-</footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Prevent scrolling during intro
+      document.body.style.overflow = 'hidden';
+      
+      // Initialize the intro
+      initIntro();
+      
+      // Your existing JavaScript code
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const navLinks = document.getElementById('navLinks');
+      
+      mobileBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.getElementById('navLinks');
-    
-    mobileBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-          navLinks.classList.remove('active');
-        }
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+            navLinks.classList.remove('active');
+          }
+        });
       });
     });
-  });
 
-  function showChoiceModal() {
-    document.getElementById('choiceModal').style.display = 'flex';
-  }
-
-  function closeChoiceModal() {
-    document.getElementById('choiceModal').style.display = 'none';
-  }
-
-  window.onclick = function(e) {
-    const modal = document.getElementById('choiceModal');
-    if (e.target === modal) {
-      closeChoiceModal();
+    function initIntro() {
+      const canvas = document.getElementById('candlestickCanvas');
+      const ctx = canvas.getContext('2d');
+      const loadingProgress = document.getElementById('loadingProgress');
+      const introOverlay = document.getElementById('introOverlay');
+      
+      // Set canvas dimensions
+      function resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        
+        drawChartGrid();
+      }
+      
+      // Draw chart grid
+      function drawChartGrid() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const gridColor = 'rgba(255, 255, 255, 0.03)';
+        
+        // Vertical grid lines
+        ctx.strokeStyle = gridColor;
+        ctx.lineWidth = 1;
+        for (let x = 0; x < width; x += width / 8) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, height);
+          ctx.stroke();
+        }
+        
+        // Horizontal grid lines
+        for (let y = 0; y < height; y += height / 5) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(width, y);
+          ctx.stroke();
+        }
+      }
+      
+      // Candlestick parameters
+      const candleWidth = 16;
+      const candleGap = 6;
+      let candleCount = Math.floor(canvas.clientWidth / (candleWidth + candleGap)) + 10;
+      let offsetX = 0;
+      let candles = [];
+      let lastClose = 1.0800;
+      
+      // Generate candlesticks
+      function generateCandle(prevClose) {
+        const pipSize = 0.0001;
+        const trendBias = Math.random() > 0.6 ? 1 : -1;
+        
+        let open = prevClose + (Math.random() - 0.5) * 5 * pipSize;
+        let close = open + trendBias * (5 + Math.random() * 15) * pipSize;
+        let high = Math.max(open, close) + Math.random() * 8 * pipSize;
+        let low = Math.min(open, close) - Math.random() * 8 * pipSize;
+        
+        // Ensure minimum candle body
+        if (Math.abs(close - open) < 3 * pipSize) {
+          close = open + (Math.random() > 0.5 ? 1 : -1) * 3 * pipSize;
+        }
+        
+        return {
+          open: parseFloat(open.toFixed(4)),
+          close: parseFloat(close.toFixed(4)),
+          high: parseFloat(high.toFixed(4)),
+          low: parseFloat(low.toFixed(4))
+        };
+      }
+      
+      // Initialize candles
+      for (let i = 0; i < candleCount; i++) {
+        let candle = generateCandle(lastClose);
+        lastClose = candle.close;
+        candles.push(candle);
+      }
+      
+      // Draw candlestick
+      function drawCandle(x, candle) {
+        const isBullish = candle.close > candle.open;
+        const bodyTop = Math.min(candle.open, candle.close);
+        const bodyBottom = Math.max(candle.open, candle.close);
+        const scaleY = 8000;
+        
+        // Calculate pixel positions
+        const height = canvas.clientHeight;
+        const bodyHeight = (bodyBottom - bodyTop) * scaleY;
+        const bodyY = height * 0.7 - (bodyTop - 1.0750) * scaleY;
+        const wickTop = height * 0.7 - (candle.high - 1.0750) * scaleY;
+        const wickBottom = height * 0.7 - (candle.low - 1.0750) * scaleY;
+        
+        // Colors
+        const bodyColor = isBullish ? 'rgba(40, 167, 155, 0.9)' : 'rgba(239, 83, 80, 0.9)';
+        const wickColor = isBullish ? 'rgba(40, 167, 155, 0.95)' : 'rgba(239, 83, 80, 0.95)';
+        
+        // Draw wick
+        ctx.beginPath();
+        ctx.strokeStyle = wickColor;
+        ctx.lineWidth = 2;
+        ctx.moveTo(x + candleWidth / 2, wickTop);
+        ctx.lineTo(x + candleWidth / 2, wickBottom);
+        ctx.stroke();
+        
+        // Draw body
+        ctx.fillStyle = bodyColor;
+        ctx.fillRect(x, bodyY, candleWidth, bodyHeight);
+        
+        // Body highlight
+        ctx.strokeStyle = isBullish ? 'rgba(60, 187, 175, 0.7)' : 'rgba(255, 103, 100, 0.7)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x + 0.5, bodyY + 0.5, candleWidth - 1, bodyHeight - 1);
+      }
+      
+      // Animation loop
+      function animate() {
+        drawChartGrid();
+        
+        // Slow down the movement
+        offsetX -= 0.6;
+        
+        // Cycle candles when needed
+        if (Math.abs(offsetX) > (candleWidth + candleGap)) {
+          offsetX += candleWidth + candleGap;
+          candles.shift();
+          candles.push(generateCandle(candles[candles.length - 1].close));
+        }
+        
+        // Draw all candles with offset
+        for (let i = 0; i < candles.length; i++) {
+          let x = i * (candleWidth + candleGap) + offsetX;
+          if (x > -candleWidth && x < canvas.clientWidth) {
+            drawCandle(x, candles[i]);
+          }
+        }
+        
+        requestAnimationFrame(animate);
+      }
+      
+      // Start the intro sequence
+      function startIntroSequence() {
+        // Start loading bar
+        setTimeout(() => {
+          loadingProgress.style.width = '100%';
+        }, 1000);
+        
+        // Wait for animations to complete
+        setTimeout(() => {
+          // Fade out overlay
+          introOverlay.classList.add('fade-out');
+          setTimeout(() => {
+            introOverlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+          }, 800);
+        }, 4000);
+      }
+      
+      // Initialize and start animations
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      animate();
+      startIntroSequence();
     }
-  }
-</script>
 
+    function showChoiceModal() {
+      document.getElementById('choiceModal').style.display = 'flex';
+    }
+
+    function closeChoiceModal() {
+      document.getElementById('choiceModal').style.display = 'none';
+    }
+
+    window.onclick = function(e) {
+      const modal = document.getElementById('choiceModal');
+      if (e.target === modal) {
+        closeChoiceModal();
+      }
+    }
+  </script>
 </body>
 </html>
